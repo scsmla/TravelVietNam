@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Area" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Area">
+    <Key>
+      <PropertyRef Name="AreaTravelling" />
+    </Key>
+    <Property Name="AreaTravelling" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Place" Relationship="Area.FK__Place__Area__3A81B327" FromRole="Area" ToRole="Place" />
+  </EntityType>
+  <EntityType Name="Province">
+    <Key>
+      <PropertyRef Name="NAME" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="NAME" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="AreaOfCurrentPlace" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityContainer Name="AreadbContext" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Area" EntityType="Self.Area" />
+    <EntitySet Name="Province" EntityType="Self.Province" />
+    <EntitySet Name="Place" EntityType="Area.Place" />
+    <AssociationSet Name="FK__Place__Area__3A81B327" Association="Area.FK__Place__Area__3A81B327">
+      <End Role="Area" EntitySet="Area" />
+      <End Role="Place" EntitySet="Place" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Place">
+    <Key>
+      <PropertyRef Name="Name" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="Location" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="Area" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Area1" Relationship="Area.FK__Place__Area__3A81B327" FromRole="Place" ToRole="Area" />
+    <Property Name="Photos" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <Association Name="FK__Place__Area__3A81B327">
+    <End Type="Area.Area" Role="Area" Multiplicity="0..1" />
+    <End Type="Area.Place" Role="Place" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Area">
+        <PropertyRef Name="AreaTravelling" />
+      </Principal>
+      <Dependent Role="Place">
+        <PropertyRef Name="Area" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

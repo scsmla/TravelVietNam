@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="AreaStoreContainer" CdmEntityContainer="AreadbContext">
+    <EntitySetMapping Name="Area">
+      <EntityTypeMapping TypeName="Area.Area">
+        <MappingFragment StoreEntitySet="Area">
+          <ScalarProperty Name="AreaTravelling" ColumnName="AreaTravelling" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Place">
+      <EntityTypeMapping TypeName="Area.Place">
+        <MappingFragment StoreEntitySet="Place">
+          <ScalarProperty Name="Rating" ColumnName="Rating" />
+          <ScalarProperty Name="VisitorsPerYear" ColumnName="VisitorsPerYear" />
+          <ScalarProperty Name="CurrentStatus" ColumnName="CurrentStatus" />
+          <ScalarProperty Name="Photos" ColumnName="Photos" />
+          <ScalarProperty Name="Area" ColumnName="Area" />
+          <ScalarProperty Name="Location" ColumnName="Location" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Hotel">
+      <EntityTypeMapping TypeName="Area.Hotel">
+        <MappingFragment StoreEntitySet="Hotel">
+          <ScalarProperty Name="Photos" ColumnName="Photos" />
+          <ScalarProperty Name="Rating" ColumnName="Rating" />
+          <ScalarProperty Name="EmptyRooms" ColumnName="EmptyRooms" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+          <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="Place" ColumnName="Place" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

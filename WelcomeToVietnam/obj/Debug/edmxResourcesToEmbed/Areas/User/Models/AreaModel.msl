@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="AreaStoreContainer" CdmEntityContainer="AreadbContext">
+    <EntitySetMapping Name="Area">
+      <EntityTypeMapping TypeName="Area.Area">
+        <MappingFragment StoreEntitySet="Area">
+          <ScalarProperty Name="AreaTravelling" ColumnName="AreaTravelling" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Province">
+      <EntityTypeMapping TypeName="Area.Province">
+        <MappingFragment StoreEntitySet="Province">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="NAME" ColumnName="NAME" />
+          <ScalarProperty Name="AreaOfCurrentPlace" ColumnName="AreaOfCurrentPlace" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Place">
+      <EntityTypeMapping TypeName="Area.Place">
+        <MappingFragment StoreEntitySet="Place">
+          <ScalarProperty Name="Photos" ColumnName="Photos" />
+          <ScalarProperty Name="Area" ColumnName="Area" />
+          <ScalarProperty Name="Location" ColumnName="Location" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

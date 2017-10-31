@@ -1,0 +1,103 @@
+﻿
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - Welcome To Viet Nam</title>
+    <link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <script src="~/Scripts/modernizr-2.6.2.js"></script>
+    <link rel="stylesheet" type="text/css" href="~/Content/Layout.css" />
+</head>
+<body style="background-image:  linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(/Photos/userpage.jpg); background-position: inherit;background-repeat:repeat ">
+    <div class="navbar navbar-default navbar-fixed-top" style="background:transparent">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                @Html.ActionLink("Welcome to Viet Nam", "HomePage", "Home", new { area = "" }, new { @class = "navbar-brand", @style = "color:white" })
+            </div>
+            <div class="collapse navbar-collapse" id="myNavbar">
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="@Url.Action("UserPage","User")">SEARCH</a></li>
+                    <li><a href="#">SERVICES</a></li>
+                    <li><a href="#">FAQ</a></li>
+                    <li><a href="#">ABOUT US</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <div class="container body-content">
+        @RenderBody()
+
+    </div>
+    <br />
+    <br />
+    <br />
+    <hr />
+    <div class="container-fluid">
+        
+        <div class="row">
+            <div class="col-sm-2" style="margin-left:50px">
+                <strong style="color:white">CONTACT</strong>
+                <br />
+                <br />
+                <br />
+                <p><span class="glyphicon glyphicon-map-marker"></span> Ha noi, Viet Nam</p>
+                <p><span class="glyphicon glyphicon-phone"></span> +0123456789</p>
+                <p><span class="glyphicon glyphicon-envelope"></span> nd2222@gmail.com</p>
+            </div>
+            <div class="col-sm-2">
+                <strong style="color:white">SITE PAGES</strong>
+                <br />
+                <br />
+                <br />
+                <p>Our product</p>
+                <p>FAQ</p>
+                <p>Say Hello</p>
+            </div>
+            <div class="col-sm-2">
+                <strong style="color:white">ACCOUNT</strong>
+                <br />
+                <br />
+                <br />
+                <p>Sign up</p>
+                <p>Log In</p>
+                <p>Help</p>
+            </div>
+            <div class="col-sm-2">
+                <strong style="color:white">ABOUT US</strong>
+                <br />
+                <br />
+                <br />
+                <p>Policy</p>
+                <p>Term</p>
+            </div>
+            
+            
+        </div>
+    </div>
+
+
+    <script src="~/scripts/jquery-3.1.1.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <script>
+        $(function () {
+            $(document).scroll(function () {
+                var $nav = $(".navbar-fixed-top");
+                $nav.toggleClass('scrolled', $(this).scrollTop() > $nav.height());
+            });
+        });
+       
+    </script>
+</body>
+</html>

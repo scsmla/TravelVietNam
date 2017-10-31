@@ -1,0 +1,371 @@
+﻿@model WelcomeToVietnam.Models.User
+
+@{Layout = null;}
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Admin Page</title>
+    <meta charset="utf-8">
+    <meta content="ie=edge" http-equiv="x-ua-compatible">
+    <meta content="template language" name="keywords">
+    <meta content="Native Theme" name="author">
+    <meta content="Admin Template" name="description">
+    <meta content="width=device-width, initial-scale=1" name="viewport">
+    <link href="favicon.png" rel="shortcut icon">
+    <link href="apple-touch-icon.png" rel="apple-touch-icon">
+
+    <link rel="stylesheet" href="~/Content/assets/plugins/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/Content/assets/plugins/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="~/Content/assets/plugins/animate/animate.css">
+    <link rel="stylesheet" href="~/Content/assets/css/main.css" />
+
+    <script src="~/Content/assets/plugins/jquery/jquery-2.1.1.min.js"></script>
+    <script src="~/Content/assets/plugins/chart.js/dist/Chart.min.js"></script>
+    <script src="~/Content/assets/plugins/jquery-count-to/jquery.countTo.js"></script>
+    <script src="~/Content/assets/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+    <script src="~/Content/assets/js/app.js"></script>
+</head>
+
+<body>
+    <div class="top-nav">
+        <div class="top-nav-box">
+
+            <div class="logo-wrapper">
+                <div class="logo-box">
+
+                    <a href="@Url.Action("HomePage","AdminManage")">
+                        <div class="logo-title">Home</div>
+                    </a>
+                </div>
+            </div>
+            <div class="top-nav-content">
+                <div class="top-nav-box">
+
+                    <div class="global-search">
+
+                    </div>
+
+                    <div class="user-top-profile">
+                        <div class="user-image">
+                            <div class="user-on"></div>
+
+                        </div>
+                        <div class="clear">
+                            <div class="user-name">John Doe</div>
+                            <div class="user-group">Administrator</div>
+                            <ul class="user-top-menu animated bounceInUp">
+                                <li>
+                                    <a href="index.html">
+                                        Profile
+                                        <div class="badge badge-yellow pull-right">2</div>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="index.html">Settings</a>
+                                </li>
+                                <li>
+                                    <a href="index.html">Change Password</a>
+                                </li>
+                                <li>
+                                    <a href="index.html">Logout</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="profile-nav-mobile">
+                <i class="fa fa-cog"></i>
+            </div>
+        </div>
+    </div>
+    <div class="wrapper">
+        <aside class="side-nav">
+
+            <div class="user-side-profile">
+                <div class="user-image">
+                    <div class="user-on"></div>
+                    <img alt="pongo" src="assets/images/profile.png">
+                </div>
+                <div class="clear">
+                    <div class="user-name">John Doe</div>
+                    <div class="user-group">Administrator</div>
+                    <ul class="user-side-menu animated bounceInUp">
+                        <li>
+                            <a href="index.html">
+                                Profile
+                                <div class="badge badge-yellow pull-right">2</div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="index.html">Settings</a>
+                        </li>
+                        <li>
+                            <a href="index.html">Change Password</a>
+                        </li>
+                        <li>
+                            <a href="index.html">Logout</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="main-menu-title">Menu</div>
+            <div class="main-menu">
+                <ul>
+                    <li class="active">
+                        <a href="@Url.Action("HomePage","AdminManage")">
+                            <i class="fa fa-bars"></i>
+                            <span>Dashboard</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <i class="fa fa-signal"></i>
+                            <span>Charts</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div class="main-menu-title">Another Menu Section</div>
+            <div class="main-menu">
+                <ul>
+                    <li>
+                        <a href="index.html">
+                            <i class="fa fa-paper-plane"></i>
+                            <span>Pages</span>
+                        </a>
+                        <ul>
+                            
+
+                            <li><a href="@Url.Action("CreatePlace","AdminManage")">Create Place</a></li>
+                            <li><a href="@Url.Action("CreateHotel","AdminManage")">Create Hotel</a></li>
+                            <li>
+                                <a href="@Url.Action("IndexPlace","AdminManage")">Manage Place</a>
+                            </li>
+                            <li>
+                                <a href="@Url.Action("IndexHotel","AdminManage")">Manage Hotel</a>
+                            </li>
+                        </ul>
+
+                    </li>
+                </ul>
+
+            </div>
+
+        </aside>
+        <div class="main">
+            <div class="breadcrumb">
+                <a href="index.html">Home</a>
+                <a href="index.html">Products</a>
+                <a href="index.html">Iphone 6</a>
+            </div>
+            <div class="top-banner">
+                <div class="top-banner-title">Dashboard</div>
+                <div class="top-banner-subtitle">
+                    Welcome back, John Doe,
+                    <i class="fa fa-map-marker"></i> New York City
+                </div>
+            </div>
+            <div class="content with-top-banner">
+
+
+                <div class="panel">
+                    <div class="row">
+                        <div class="col-md-8 sm-max">
+                            <div class="content-header">
+                                <i class="fa fa-signal"></i>
+                                <div class="content-header-title">Line Chart</div>
+                            </div>
+                            <div class="content-box">
+                                <div class="content-box-header">
+                                    <div class="header-menu active">Visitors</div>
+
+                                    <select class="select-rounded pull-right">
+                                        <option>Today</option>
+                                        <option>7 Days</option>
+                                        <option>14 Days</option>
+                                        <option>Last Month</option>
+                                    </select>
+                                </div>
+                                <div class="line-chart-wrapper">
+                                    <div class="line-chart-label">LAST VISITORS</div>
+                                    <div class="line-chart-value">
+                                        <span class="timer" data-from="0" data-to="12501">12,501</span>
+                                    </div>
+                                    <canvas id="line-chart"></canvas>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="panel">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="content-header">
+                                <i class="fa fa-newspaper-o"></i>
+                                <div class="content-header-title">Donut Chart</div>
+                            </div>
+                            <div class="content-box">
+                                <div class="donut-chart-wrapper">
+                                    <canvas width="120" height="120" id="donut-chart"></canvas>
+                                    <div class="donut-chart-label">
+                                        <div class="donut-chart-value">330</div>
+                                        <div class="donut-chart-title">Total Visitor</div>
+                                    </div>
+                                </div>
+                                <div class="donut-chart-legend">
+                                    <div class="legend-list">
+                                        <div class="legend-bullet green"></div>
+                                        <div class="legend-title">Australia</div>
+                                    </div>
+                                    <div class="legend-list">
+                                        <div class="legend-bullet red"></div>
+                                        <div class="legend-title">Nigeria</div>
+                                    </div>
+                                    <div class="legend-list">
+                                        <div class="legend-bullet yellow"></div>
+                                        <div class="legend-title">United States</div>
+                                    </div>
+                                    <div class="legend-list">
+                                        <div class="legend-bullet blue"></div>
+                                        <div class="legend-title">Japan</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-8">
+                            <div class="content-header">
+                                <i class="fa fa-newspaper-o"></i>
+
+                            </div>
+                            <div class="content-box">
+                                <div class="table-responsive">
+                                    <table class="table">
+                                        <thead>
+                                            <tr>
+
+                                                <th>Place Name</th>
+                                                <th class="text-center">Images</th>
+                                                <th class="text-center">Status</th>
+                                                <th class="text-right">Total Visit</th>
+                                                <th class="text-center">Action</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <th>
+                                                    <input type="checkbox">
+                                                </th>
+                                                <td class="nowrap">Iphone 6</td>
+                                                <td class="text-center">
+                                                    <img alt="pongo" class="image-table" src="assets/images/asparagus.jpg">
+                                                </td>
+                                                <td class="text-center">
+                                                    <div class="status-pill green"></div>
+                                                </td>
+                                                <td class="text-right">$22</td>
+                                                <td class="text-center">
+                                                    <i class="fa fa-pencil"></i>
+                                                    <i class="fa fa-trash"></i>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th>
+                                                    <input type="checkbox">
+                                                </th>
+                                                <td class="nowrap">Iphone 6</td>
+                                                <td class="text-center">
+                                                    <img alt="pongo" class="image-table" src="assets/images/belts.jpg">
+                                                </td>
+                                                <td class="text-center">
+                                                    <div class="status-pill red"></div>
+                                                </td>
+                                                <td class="text-right">$22</td>
+                                                <td class="text-center">
+                                                    <i class="fa fa-pencil"></i>
+                                                    <i class="fa fa-trash"></i>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th>
+                                                    <input type="checkbox">
+                                                </th>
+                                                <td class="nowrap">Iphone 6</td>
+                                                <td class="text-center">
+                                                    <img alt="pongo" class="image-table" src="assets/images/bulldozer.jpg">
+                                                </td>
+                                                <td class="text-center">
+                                                    <div class="status-pill yellow"></div>
+                                                </td>
+                                                <td class="text-right">$22</td>
+                                                <td class="text-center">
+                                                    <i class="fa fa-pencil"></i>
+                                                    <i class="fa fa-trash"></i>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th>
+                                                    <input type="checkbox">
+                                                </th>
+                                                <td class="nowrap">Iphone 6</td>
+                                                <td class="text-center">
+                                                    <img alt="pongo" class="image-table" src="assets/images/chocolate.jpg">
+                                                </td>
+                                                <td class="text-center">
+                                                    <div class="status-pill green"></div>
+                                                </td>
+                                                <td class="text-right">$22</td>
+                                                <td class="text-center">
+                                                    <i class="fa fa-pencil"></i>
+                                                    <i class="fa fa-trash"></i>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th>
+                                                    <input type="checkbox">
+                                                </th>
+                                                <td class="nowrap">Iphone 6</td>
+                                                <td class="text-center">
+                                                    <img alt="pongo" class="image-table" src="assets/images/belts.jpg">
+                                                </td>
+                                                <td class="text-center">
+                                                    <div class="status-pill red"></div>
+                                                </td>
+                                                <td class="text-right">$22</td>
+                                                <td class="text-center">
+                                                    <i class="fa fa-pencil"></i>
+                                                    <i class="fa fa-trash"></i>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th>
+                                                    <input type="checkbox">
+                                                </th>
+                                                <td class="nowrap">Iphone 6</td>
+                                                <td class="text-center">
+                                                    <img alt="pongo" class="image-table" src="assets/images/bulldozer.jpg">
+                                                </td>
+                                                <td class="text-center">
+                                                    <div class="status-pill yellow"></div>
+                                                </td>
+                                                <td class="text-right">$22</td>
+                                                <td class="text-center">
+                                                    <i class="fa fa-pencil"></i>
+                                                    <i class="fa fa-trash"></i>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

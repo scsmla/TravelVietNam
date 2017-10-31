@@ -1,0 +1,62 @@
+﻿@model IEnumerable<WelcomeToVietnam.Models.Place>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Manage</h2>
+
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.ID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Location)
+        </th>
+        
+        <th>
+            @Html.DisplayNameFor(model => model.CurrentStatus)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.VisitorsPerYear)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Rating)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Area1.AreaTravelling)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.ID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Location)
+        </td>
+       
+        <td>
+            @Html.DisplayFor(modelItem => item.CurrentStatus)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.VisitorsPerYear)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Rating)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Area1.AreaTravelling)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.Name }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.Name })
+        </td>
+    </tr>
+}
+
+</table>

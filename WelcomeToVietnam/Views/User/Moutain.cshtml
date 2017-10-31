@@ -1,0 +1,68 @@
+﻿@using PagedList;
+@using PagedList.Mvc;
+@model IPagedList<WelcomeToVietnam.Models.Place>
+@{
+    ViewBag.Title = "Moutain";
+   
+}
+<link href="~/Content/bootstrap.css" rel="stylesheet" />
+<link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+<link rel="stylesheet" type="text/css" href="~/Content/Sea.css" />
+<h2 style="color:blue">Moutains</h2>
+@using (Html.BeginForm("Moutain", "User", FormMethod.Get))
+{
+    <b>Sort By</b>
+    @Html.RadioButton("sortBy", "VisitorPerYear")<text>VisitorPerYear</text>
+    @Html.RadioButton("sortBy", "Rating", true)<text>Rating</text>
+
+    <br />
+    <input type="submit" value="Sort Now" style="background:transparent; height: 50px; color: white; width: 100px " class="button" />
+
+}
+@foreach (var item in Model)
+{
+
+    <div class="col-sm-4">
+        <div class="thumbnail">
+            @{
+                var base64 = Convert.ToBase64String(item.Photos);
+                var imgSrc = String.Format("data:image/gif;base64,{0}", base64);
+            }
+            <a href="@Url.Action("DetailsPlaceAndBookSeat", "User", new { id = item.ID })">
+                <div class="flip-container" ontouchstart="this.classList.toggle('hover');">
+                    <div class="flipper">
+                        <img class="front" src="@imgSrc">
+                        <div class="back">
+                            <div class="back-logo"></div>
+                            <div class="back-title"></div>
+                            <div class="itemName">@item.Name</div>
+                            <br />
+                            <div class="itemLocation">Location:@item.Location</div>
+                            <br />
+                            <div class="itemRating">
+                                Rating
+                                <div class="rating" style="text-align:center">
+                                    <span>☆</span>
+                                    <span>☆</span>
+                                    <span>☆</span>
+                                    <span>☆</span>
+                                    <span>☆</span>
+                                </div>
+                            </div>
+                            <br />
+                            <p class="itemWiki"><a href="https://en.wikipedia.org/wiki/@item.Name" target="_blank">Wikipedia</a></p>
+
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </div>
+    </div>
+                }
+@Html.PagedListPager(Model, page => Url.Action("Moutain", new
+{
+    page,
+    searchBy = Request.QueryString["searchBy"],
+    search = Request.QueryString["search"]
+}),
+    new PagedListRenderOptions() { Display = PagedListDisplayMode.IfNeeded })

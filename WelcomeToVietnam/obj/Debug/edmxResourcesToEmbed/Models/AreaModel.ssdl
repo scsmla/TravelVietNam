@@ -1,0 +1,73 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Area.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Area">
+    <Key>
+      <PropertyRef Name="AreaTravelling" />
+    </Key>
+    <Property Name="AreaTravelling" Type="nvarchar" MaxLength="20" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Hotel">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Place" Type="nvarchar" MaxLength="30" />
+    <Property Name="Address" Type="nvarchar" MaxLength="100" />
+    <Property Name="PhoneNumber" Type="nvarchar" MaxLength="12" />
+    <Property Name="Price" Type="nvarchar" MaxLength="15" />
+    <Property Name="EmptyRooms" Type="int" />
+    <Property Name="Rating" Type="int" />
+    <Property Name="Photos" Type="varbinary(max)" />
+  </EntityType>
+  <EntityType Name="Place">
+    <Key>
+      <PropertyRef Name="Name" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="30" Nullable="false" />
+    <Property Name="Location" Type="nvarchar" MaxLength="20" />
+    <Property Name="Area" Type="nvarchar" MaxLength="20" />
+    <Property Name="Photos" Type="varbinary(max)" />
+    <Property Name="CurrentStatus" Type="nvarchar" MaxLength="50" />
+    <Property Name="VisitorsPerYear" Type="int" />
+    <Property Name="Rating" Type="int" />
+  </EntityType>
+  <Association Name="FK__Place__Area__3A81B327">
+    <End Role="Area" Type="Self.Area" Multiplicity="0..1" />
+    <End Role="Place" Type="Self.Place" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Area">
+        <PropertyRef Name="AreaTravelling" />
+      </Principal>
+      <Dependent Role="Place">
+        <PropertyRef Name="Area" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Hotel_Place">
+    <End Role="Place" Type="Self.Place" Multiplicity="0..1" />
+    <End Role="Hotel" Type="Self.Hotel" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Place">
+        <PropertyRef Name="Name" />
+      </Principal>
+      <Dependent Role="Hotel">
+        <PropertyRef Name="Place" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="AreaStoreContainer">
+    <EntitySet Name="Area" EntityType="Self.Area" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Hotel" EntityType="Self.Hotel" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Place" EntityType="Self.Place" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__Place__Area__3A81B327" Association="Self.FK__Place__Area__3A81B327">
+      <End Role="Area" EntitySet="Area" />
+      <End Role="Place" EntitySet="Place" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Hotel_Place" Association="Self.FK_Hotel_Place">
+      <End Role="Place" EntitySet="Place" />
+      <End Role="Hotel" EntitySet="Hotel" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

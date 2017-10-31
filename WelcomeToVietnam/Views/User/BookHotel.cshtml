@@ -1,0 +1,34 @@
+﻿@model IEnumerable<WelcomeToVietnam.Models.Hotel>
+
+@{
+    ViewBag.Title = "BookHotel";
+}
+<link rel="stylesheet" type="text/css" href="~/Content/themes/DetailPage.css" />
+<h2>BookHotel</h2>
+
+@foreach (var item in Model)
+{
+    <div class="col-sm-4">
+        <div class="thumbnail">
+            @{
+                var base64 = Convert.ToBase64String(item.Photos);
+                var imgSrc = String.Format("data:image/gif;base64,{0}", base64);
+            }
+            <a href="@Url.Action("BookHotelDetails","User",new { id = item.ID})">
+                <img src="@imgSrc" alt="@item.Name" width="200" height="200">
+            </a>
+            <p>@item.Name</p>
+            <p style="color:green;font-weight:bold">@item.Price<span>$</span></p>
+            <p> 
+                <div class="rating" style="float:left">
+                    <span>☆</span>
+                    <span>☆</span>
+                    <span>☆</span>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            
+                    <span>☆</span>
+                    <span>☆</span>
+                </div>
+            </p>
+            <br />
+        </div>
+    </div>
+}
