@@ -5,6 +5,10 @@
 dt{
 	color:white;
 }
+::-webkit-input-placeholder { 
+  color: white;
+  font-size: 15px;
+}
 input{
 	color: red;
 	font-weight: bold;
@@ -38,7 +42,7 @@ input{
 }
 .rating > span:hover:before,
 .rating > span:hover ~ span:before {
-   content: "\2605";
+   
    position: absolute;
 }
 .thumbnail{

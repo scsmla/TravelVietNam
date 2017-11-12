@@ -7,10 +7,10 @@
 <link href="~/content/bootstrap.css" rel="stylesheet" />
 <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
 <link rel="stylesheet" type="text/css" href="~/Content/Sea.css" />
-<h2>Pagoda</h2>
+<h2  style="color:white">Pagoda</h2>
 @using (Html.BeginForm("Pagoda", "User", FormMethod.Get))
 {
-    <b>Sort By</b>
+    <b style="color:white">Sort By</b>
     @Html.RadioButton("sortBy", "VisitorPerYear")<text>VisitorPerYear</text>
     @Html.RadioButton("sortBy", "Rating", true)<text>Rating</text>
 

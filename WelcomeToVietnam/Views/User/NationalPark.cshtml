@@ -7,10 +7,10 @@
 <link href="~/Content/bootstrap.css" rel="stylesheet" />
 <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
 <link rel="stylesheet" type="text/css" href="~/Content/Sea.css" />
-<h2>National Parks</h2>
+<h2 style="color:white">National Parks</h2>
 @using (Html.BeginForm("NationalPark", "User", FormMethod.Get))
 {
-    <b>Sort By</b>
+    <b style="color:white">Sort By</b>
     @Html.RadioButton("sortBy", "VisitorPerYear")<text>VisitorPerYear</text>
     @Html.RadioButton("sortBy", "Rating", true)<text>Rating</text>
 
@@ -22,7 +22,7 @@
 {
 
     <div class="col-sm-4">
-        <div class="thumbnail">
+        <div id="@item.ID" class="thumbnail">
             @{
                 var base64 = Convert.ToBase64String(item.Photos);
                 var imgSrc = String.Format("data:image/gif;base64,{0}", base64);
@@ -41,11 +41,11 @@
                             <div class="itemRating">
                                 Rating
                                 <div class="rating" style="text-align:center">
-                                    <span>☆</span>
-                                    <span>☆</span>
-                                    <span>☆</span>
-                                    <span>☆</span>
-                                    <span>☆</span>
+                                    <span class="star1"></span>
+                                    <span class="star2"></span>
+                                    <span class="star3"></span>
+                                    <span class="star4"></span>
+                                    <span class="star5"></span>
                                 </div>
                             </div>
                             <br />
@@ -57,6 +57,18 @@
             </a>
         </div>
     </div>
+    <script>
+       var rating = Math.floor(@item.Rating);
+       for (i = 1; i <= 5; i++) {
+           var targetStar = document.getElementById("@item.ID").getElementsByClassName("star" + (6 - i));
+           if (i <= rating) {
+               targetStar[0].innerHTML = "&starf;";
+           }
+           else {
+               targetStar[0].innerHTML = "☆";
+           }
+       }
+    </script>
                 }
 @Html.PagedListPager(Model, page => Url.Action("NationalPark", new
 {

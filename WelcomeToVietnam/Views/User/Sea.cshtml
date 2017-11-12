@@ -9,10 +9,10 @@
 <link rel="stylesheet" type="text/css" href="~/Content/Sea.css" />
 <script src="~/scripts/jquery-3.1.1.js"></script>
 <script src="~/scripts/jquery-3.1.1.min.js"></script>
-<h2>Sea</h2>
+<h2 style="color:white">Sea</h2>
 @using (Html.BeginForm("Sea", "User", FormMethod.Get))
 {
-    <b>Sort By</b>
+    <b style="color:white">Sort By</b>
     @Html.RadioButton("sortBy", "VisitorPerYear")<text>VisitorPerYear</text>
     @Html.RadioButton("sortBy", "Rating", true)<text>Rating</text>
     <br />

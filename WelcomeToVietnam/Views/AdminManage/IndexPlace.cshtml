@@ -9,21 +9,15 @@
 
 <table class="table">
     <tr>
+        
         <th>
             @Html.DisplayNameFor(model => model.ID)
         </th>
         <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th>
             @Html.DisplayNameFor(model => model.Location)
-        </th>
-        
-        <th>
-            @Html.DisplayNameFor(model => model.CurrentStatus)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.VisitorsPerYear)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Rating)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Area1.AreaTravelling)
@@ -37,17 +31,10 @@
             @Html.DisplayFor(modelItem => item.ID)
         </td>
         <td>
+            @Html.DisplayFor(modelItem => item.Name)
+        </td>
+        <td>
             @Html.DisplayFor(modelItem => item.Location)
-        </td>
-       
-        <td>
-            @Html.DisplayFor(modelItem => item.CurrentStatus)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.VisitorsPerYear)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Rating)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Area1.AreaTravelling)

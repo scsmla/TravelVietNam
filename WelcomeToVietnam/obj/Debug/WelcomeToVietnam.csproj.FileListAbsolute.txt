@@ -117,6 +117,6 @@ C:\Users\Bui\Documents\Visual Studio 2015\Projects\TravelVietNam\WelcomeToVietna
 C:\Users\Bui\Documents\Visual Studio 2015\Projects\TravelVietNam\WelcomeToVietnam\bin\System.Web.Webpages.Razor.xml
 C:\Users\Bui\Documents\Visual Studio 2015\Projects\TravelVietNam\WelcomeToVietnam\bin\System.Web.Helpers.xml
 C:\Users\Bui\Documents\Visual Studio 2015\Projects\TravelVietNam\WelcomeToVietnam\bin\System.Web.Mvc.xml
-C:\Users\Bui\Documents\Visual Studio 2015\Projects\TravelVietNam\WelcomeToVietnam\obj\Debug\WelcomeToVietnam.csprojResolveAssemblyReference.cache
 C:\Users\Bui\Documents\Visual Studio 2015\Projects\TravelVietNam\WelcomeToVietnam\obj\Debug\WelcomeToVietnam.dll
 C:\Users\Bui\Documents\Visual Studio 2015\Projects\TravelVietNam\WelcomeToVietnam\obj\Debug\WelcomeToVietnam.pdb
+C:\Users\Bui\Documents\Visual Studio 2015\Projects\TravelVietNam\WelcomeToVietnam\obj\Debug\WelcomeToVietnam.csprojResolveAssemblyReference.cache

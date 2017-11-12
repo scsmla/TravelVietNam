@@ -2,14 +2,15 @@
 
 @{
     ViewBag.Title = "BookHotel";
+    
 }
 <link rel="stylesheet" type="text/css" href="~/Content/themes/DetailPage.css" />
-<h2>BookHotel</h2>
+<h2 style="color:white">BookHotel</h2>
 
 @foreach (var item in Model)
 {
-    <div class="col-sm-4">
-        <div class="thumbnail">
+    <div class="col-sm-4" style="margin-top:50px">
+        <div id="@item.ID" class="thumbnail">
             @{
                 var base64 = Convert.ToBase64String(item.Photos);
                 var imgSrc = String.Format("data:image/gif;base64,{0}", base64);
@@ -17,18 +18,33 @@
             <a href="@Url.Action("BookHotelDetails","User",new { id = item.ID})">
                 <img src="@imgSrc" alt="@item.Name" width="200" height="200">
             </a>
-            <p>@item.Name</p>
+
+            <p style="color:green">@item.Name</p>
             <p style="color:green;font-weight:bold">@item.Price<span>$</span></p>
+            
             <p> 
                 <div class="rating" style="float:left">
-                    <span>☆</span>
-                    <span>☆</span>
-                    <span>☆</span>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            
-                    <span>☆</span>
-                    <span>☆</span>
+                    <span class="star1"></span>
+                    <span class="star2"></span>
+                    <span class="star3"></span>
+                    <span class="star4"></span>
+                    <span class="star5"></span>
                 </div>
             </p>
             <br />
         </div>
     </div>
+    <script>
+       var rating = Math.floor(@item.Rating);
+       for (i = 1; i <= 5; i++) {
+           var targetStar = document.getElementById("@item.ID").getElementsByClassName("star" + (6 - i));
+           if (i <= rating) {
+               targetStar[0].innerHTML = "&starf;";
+           }
+           else {
+               targetStar[0].innerHTML = "☆";
+           }
+       }
+    </script>
+
 }

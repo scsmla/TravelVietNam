@@ -7,8 +7,12 @@
     <title>@ViewBag.Title - Welcome To Viet Nam</title>
     <link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
     <link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
-    <script src="~/Scripts/modernizr-2.6.2.js"></script>
     <link rel="stylesheet" type="text/css" href="~/Content/Layout.css" />
+    
+    
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6/jquery.min.js" type="text/javascript"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js" type="text/javascript"></script>
+    <link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css" rel="Stylesheet" type="text/css" />
 </head>
 <body style="background-image:  linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(/Photos/userpage.jpg); background-position: inherit;background-repeat:repeat ">
     <div class="navbar navbar-default navbar-fixed-top" style="background:transparent">
@@ -45,7 +49,7 @@
     <br />
     <hr />
     <div class="container-fluid">
-        
+
         <div class="row">
             <div class="col-sm-2" style="margin-left:50px">
                 <strong style="color:white">CONTACT</strong>
@@ -82,8 +86,8 @@
                 <p>Policy</p>
                 <p>Term</p>
             </div>
-            
-            
+
+
         </div>
     </div>
 
@@ -97,7 +101,13 @@
                 $nav.toggleClass('scrolled', $(this).scrollTop() > $nav.height());
             });
         });
-       
+        $.noConflict();
+        jQuery(document).ready(function () {
+            $('#checkInInput').datepicker({ dateFormat: 'yy-mm-dd' });
+            $('#checkOutInput').datepicker({ dateFormat: 'yy-mm-dd' });
+        });
+
+
     </script>
 </body>
 </html>

@@ -6,7 +6,7 @@ using System.Web.Mvc;
 namespace WelcomeToVietnam.Models
 {
     [MetadataType(typeof(AdminMetadata))]
-    public partial class Admin
+    public partial class tblAdmin
     {
 
     }
@@ -14,9 +14,7 @@ namespace WelcomeToVietnam.Models
     {
         [Required(ErrorMessage = "This feild is required")]
         [DataType(DataType.Password)]
-        public String Password
-        { get; set; }
-
+        public string Password { get; set; }
     }
 
 }

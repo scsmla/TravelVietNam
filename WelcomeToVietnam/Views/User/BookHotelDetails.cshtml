@@ -1,0 +1,84 @@
+﻿@model WelcomeToVietnam.Models.Hotel
+@{
+    ViewBag.Title = "BookHotelDetails";
+}
+
+<h2 style="color:white">Hotel Details</h2>
+<link rel="stylesheet" type="text/css" href="~/Content/themes/DetailPage.css" />
+
+
+ <hr />
+<div class="col-sm-8">
+    
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Address)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Address)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Price)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Price)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PhoneNumber)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.PhoneNumber)
+        </dd>
+
+       
+        <dt>
+            @Html.DisplayNameFor(model => model.Photos)
+        </dt>
+        <dd>
+            <img src="@ViewBag.SourcePhoto" width="200" height="200" />
+        </dd>   
+       
+
+    </dl>
+</div>
+<div class="col-sm-4">
+    @using (@Html.BeginForm())
+    {
+        <input placeholder="Choose check in date" id="checkInInput" style="color:white;margin-bottom:35px   " type="text"/>
+        <br>
+        <input placeholder="Choose check out date" id="checkOutInput" style="color:white;margin-bottom:35px;" type="text"/>
+        <p>How many childrens ?</p>
+        @Html.DropDownList("quantityChildren", new List<SelectListItem> {
+        new SelectListItem {Text = "1",Selected = true },
+        new SelectListItem {Text = "2" },
+        new SelectListItem {Text = "3" },
+        new SelectListItem {Text = "4" },
+        new SelectListItem {Text = "5" },
+        }, new { style = "width:220px" });
+        <br />
+        <br />
+        <p>How many adults ?</p>
+        @Html.DropDownList("quantityAdults", new List<SelectListItem> {
+        new SelectListItem {Text = "1",Selected = true },
+        new SelectListItem {Text = "2" },
+        new SelectListItem {Text = "3" },
+        new SelectListItem {Text = "4" },
+        new SelectListItem {Text = "5" },
+        }, new { style = "width:220px" });
+        <br />
+        <br />
+        <br />
+        <input type="submit" value="Confirm" style="background-color:blue; height: 50px; color: white; width: 220px " class="button" />
+    }
+</div>
+    
