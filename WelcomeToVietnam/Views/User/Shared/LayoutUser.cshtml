@@ -1,4 +1,7 @@
 ﻿
+@{
+    Layout = null;
+}
 <!DOCTYPE html>
 <html>
 <head>
@@ -6,7 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title - Welcome To Viet Nam</title>
 
-  
+
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6/jquery.min.js" type="text/javascript"></script>
     <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js" type="text/javascript"></script>
     <link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css" rel="Stylesheet" type="text/css" />
@@ -29,11 +32,23 @@
             </div>
             <div class="collapse navbar-collapse" id="myNavbar">
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a href="@Url.Action("UserPage","User")">SEARCH</a></li>
+                    <li><a href="@Url.Action("Userpage","User")">SEARCH</a></li>
                     <li><a href="#">SERVICES</a></li>
                     <li><a href="#">FAQ</a></li>
                     <li><a href="#">ABOUT US</a></li>
-                   
+                    <li>
+                        <div class="dropdown" style="position:absolute">
+                            <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">
+                                @Session["Username"]
+                                <span class="caret"></span>
+                            </button>
+                            <ul class="dropdown-menu" style="background-color:blue">
+                                <li><a href="@Url.Action("UserProfile","User")">Profile</a></li>
+                                <li><a href="#">My Tour</a></li>
+                                <li><a href="@Url.Action("Logout","User")">Log out</a></li>
+                            </ul>
+                        </div>
+                    </li>
                 </ul>
             </div>
         </div>
@@ -106,8 +121,8 @@
         });
         $.noConflict();
         jQuery(document).ready(function () {
-            $('#checkInInput').datepicker({ dateFormat: 'yy-mm-dd' });
-            $('#checkOutInput').datepicker({ dateFormat: 'yy-mm-dd' });
+            $('#checkInDate').datepicker({ dateFormat: 'yy-mm-dd' });
+            $('#checkOutDate').datepicker({ dateFormat: 'yy-mm-dd' });
         });
 
 

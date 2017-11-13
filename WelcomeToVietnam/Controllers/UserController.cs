@@ -14,8 +14,10 @@ namespace WelcomeToVietnam.Controllers
     public class UserController : Controller
     {
         private AreadbContext db = new AreadbContext();
+        private UserdbContext userdb = new UserdbContext();
+        private UserTravelDbContext userTravelDatadb = new UserTravelDbContext();
         private static int currentPlaceId = 0;
-
+        private static int currentHotelId = 0;
         public ActionResult UserPage()
         {
             if (Session["ID"] != null)
@@ -46,24 +48,6 @@ namespace WelcomeToVietnam.Controllers
             }
             else
                 return RedirectToAction("Login", "Home");
-
-            //else 
-            //{
-            //    if (db.Place.Where(x => x.Name == search).Any() == true)
-            //    {
-            //        Place place = db.Place.Where(x => x.Name == search).FirstOrDefault();
-
-            //        return RedirectToAction("DetailsPlaceAndBookSeat", "User",new { id = place.ID });
-            //    }
-            //    else
-            //    {
-            //        ModelState.Clear();
-            //        ModelState.AddModelError("", "Sorry the content is not available");
-            //        return View();
-            //    }
-            //}
-
-
         }
         public JsonResult getPlace(string term)
         {
@@ -219,6 +203,7 @@ namespace WelcomeToVietnam.Controllers
             if (Session["ID"] != null)
             {
                 Hotel hotel = db.Hotel.Where(x => x.ID == id).FirstOrDefault();
+                currentHotelId = id;
                 var base64 = Convert.ToBase64String(hotel.Photos);
                 var imgSource = String.Format("data:image/gif;base64,{0}", base64);
                 ViewBag.SourcePhoto = imgSource;
@@ -226,5 +211,47 @@ namespace WelcomeToVietnam.Controllers
             }
             return RedirectToAction("Login", "Home");
         }
+
+        [HttpPost]
+        public ActionResult BookHotelDetails(string quantityChildren,string quantityAdults,DateTime checkInDate,DateTime checkOutDate)
+        {
+            if(ModelState.IsValid)
+            {
+                userTravelData usertraveldata = new userTravelData();
+                usertraveldata.adult = Convert.ToInt32(quantityAdults);
+                usertraveldata.children = Convert.ToInt32(quantityChildren);
+                usertraveldata.checkinDate = checkInDate;
+                usertraveldata.checkoutDate = checkOutDate;
+                Hotel hotel = db.Hotel.Where(x => x.ID == currentHotelId).FirstOrDefault();
+                Place place = db.Place.Where(x => x.ID == currentPlaceId).FirstOrDefault();
+                usertraveldata.place = place.Name.ToString();
+                usertraveldata.Hotel = hotel.Name.ToString();
+                string username = Session["Username"].ToString();
+                usertraveldata.username = username;
+                usertraveldata.payment = (Convert.ToInt32((checkOutDate - checkInDate).TotalDays) + 1) * Convert.ToInt32(hotel.Price);
+                userTravelDatadb.userTravelData.Add(usertraveldata);
+                userTravelDatadb.SaveChanges();
+                ModelState.Clear();
+            }
+            return RedirectToAction("UserPage", "User");
+        }
+
+        [HttpGet]
+        public ActionResult UserProfile()
+        {
+           
+            string username = Session["Username"].ToString();
+            var user = userdb.userTravel.Where(x => x.Username == username).FirstOrDefault();
+            return View(user);
+        }
+
+        public ActionResult Logout()
+        {
+            Session["ID"] = null;
+            Session["Username"] = null;
+            return RedirectToAction("HomePage", "Home");
+        }
+
+       
     }
 }

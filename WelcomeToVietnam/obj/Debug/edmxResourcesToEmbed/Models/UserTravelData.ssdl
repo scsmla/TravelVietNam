@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="UserTravelDataModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="userTravelData">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="username" Type="nvarchar" MaxLength="50" />
+    <Property Name="place" Type="nvarchar" MaxLength="30" />
+    <Property Name="adult" Type="int" />
+    <Property Name="children" Type="int" />
+    <Property Name="checkinDate" Type="date" />
+    <Property Name="checkoutDate" Type="date" />
+    <Property Name="quantityRoom" Type="int" />
+    <Property Name="Hotel" Type="nvarchar" MaxLength="50" />
+    <Property Name="payment" Type="int" />
+  </EntityType>
+  <EntityContainer Name="UserTravelDataModelStoreContainer">
+    <EntitySet Name="userTravelData" EntityType="Self.userTravelData" Schema="dbo" store:Type="Tables" />
+  </EntityContainer>
+</Schema>

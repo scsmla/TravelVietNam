@@ -10,10 +10,7 @@
     <Property Name="Gender" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
     <Property Name="Age" Type="Int32" />
     <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="Date" Type="DateTime" Precision="0" />
-    <Property Name="Hotel" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
     <Property Name="Feedback" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-    <Property Name="PayMoney" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
   </EntityType>
   <EntityContainer Name="UserdbContext" annotation:LazyLoadingEnabled="true">
     <EntitySet Name="userTravel" EntityType="User.User" />

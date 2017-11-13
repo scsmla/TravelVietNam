@@ -1,5 +1,6 @@
 ﻿@model WelcomeToVietnam.Models.Hotel
 @{
+    Layout = "~/Views/User/Shared/LayoutUser.cshtml";
     ViewBag.Title = "BookHotelDetails";
 }
 
@@ -54,9 +55,9 @@
 <div class="col-sm-4">
     @using (@Html.BeginForm())
     {
-        <input placeholder="Choose check in date" id="checkInInput" style="color:white;margin-bottom:35px   " type="text"/>
-        <br>
-        <input placeholder="Choose check out date" id="checkOutInput" style="color:white;margin-bottom:35px;" type="text"/>
+        @Html.TextBox("checkInDate",null,new { placeholder = "Choose check in date",style = "color:white;margin-bottom:35px" })
+        @Html.TextBox("checkOutDate",null, new { placeholder = "Choose check out date", style = "color:white;margin-bottom:35px" })
+       
         <p>How many childrens ?</p>
         @Html.DropDownList("quantityChildren", new List<SelectListItem> {
         new SelectListItem {Text = "1",Selected = true },
@@ -78,7 +79,11 @@
         <br />
         <br />
         <br />
-        <input type="submit" value="Confirm" style="background-color:blue; height: 50px; color: white; width: 220px " class="button" />
+        <input type="submit" id ="submitButton" value="Confirm" style="background-color:blue; height: 50px; color: white; width: 220px " class="button" />
     }
 </div>
-    
+    <script>
+        document.getElementById("submitButton").addEventListener("click", function () {
+            alert("You have booked a hotel ! Thank you !")
+        });
+    </script>

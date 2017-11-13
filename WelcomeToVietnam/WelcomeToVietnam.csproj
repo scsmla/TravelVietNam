@@ -237,6 +237,16 @@
       <DependentUpon>UserModel.edmx</DependentUpon>
       <LastGenOutput>UserModel.cs</LastGenOutput>
     </Content>
+    <Content Include="Models\UserTravelData.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>UserTravelData.edmx</DependentUpon>
+      <LastGenOutput>UserTravelData.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\UserTravelData.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>UserTravelData.edmx</DependentUpon>
+      <LastGenOutput>UserTravelData1.cs</LastGenOutput>
+    </Content>
     <Content Include="Photos\bigcity.jpg" />
     <Content Include="Photos\catba.jpg" />
     <Content Include="Photos\clock.jpg" />
@@ -268,6 +278,13 @@
     </EntityDeploy>
     <Content Include="Models\ModelAdmin.edmx.diagram">
       <DependentUpon>ModelAdmin.edmx</DependentUpon>
+    </Content>
+    <EntityDeploy Include="Models\UserTravelData.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>UserTravelData.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\UserTravelData.edmx.diagram">
+      <DependentUpon>UserTravelData.edmx</DependentUpon>
     </Content>
     <None Include="scripts\jquery-3.1.1.intellisense.js" />
     <Content Include="scripts\jquery-1.10.2.js" />
@@ -368,6 +385,24 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>UserModel.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Models\UserTravelData.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>UserTravelData.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\userTravelData.cs">
+      <DependentUpon>UserTravelData.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\UserTravelData.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>UserTravelData.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\UserTravelData1.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>UserTravelData.tt</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -406,6 +441,8 @@
     <Content Include="Views\AdminManage\HomePage.cshtml" />
     <Content Include="Views\AdminManage\IndexHotel.cshtml" />
     <Content Include="Views\User\BookHotelDetails.cshtml" />
+    <Content Include="Views\User\Shared\LayoutUser.cshtml" />
+    <Content Include="Views\User\UserProfile.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

@@ -12,14 +12,17 @@ namespace WelcomeToVietnam.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class User
+    public partial class userTravelData
     {
         public int ID { get; set; }
-        public string Username { get; set; }
-        public string Password { get; set; }
-        public string Gender { get; set; }
-        public Nullable<int> Age { get; set; }
-        public string Email { get; set; }
-        public string Feedback { get; set; }
+        public string username { get; set; }
+        public string place { get; set; }
+        public Nullable<int> adult { get; set; }
+        public Nullable<int> children { get; set; }
+        public Nullable<System.DateTime> checkinDate { get; set; }
+        public Nullable<System.DateTime> checkoutDate { get; set; }
+        public Nullable<int> quantityRoom { get; set; }
+        public string Hotel { get; set; }
+        public Nullable<int> payment { get; set; }
     }
 }

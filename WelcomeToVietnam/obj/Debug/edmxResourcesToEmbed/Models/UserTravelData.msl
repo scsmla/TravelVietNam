@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="UserTravelDataModelStoreContainer" CdmEntityContainer="UserTravelDbContext">
+    <EntitySetMapping Name="userTravelData">
+      <EntityTypeMapping TypeName="UserTravelDataModel.userTravelData">
+        <MappingFragment StoreEntitySet="userTravelData">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="username" ColumnName="username" />
+          <ScalarProperty Name="place" ColumnName="place" />
+          <ScalarProperty Name="adult" ColumnName="adult" />
+          <ScalarProperty Name="children" ColumnName="children" />
+          <ScalarProperty Name="checkinDate" ColumnName="checkinDate" />
+          <ScalarProperty Name="checkoutDate" ColumnName="checkoutDate" />
+          <ScalarProperty Name="quantityRoom" ColumnName="quantityRoom" />
+          <ScalarProperty Name="Hotel" ColumnName="Hotel" />
+          <ScalarProperty Name="payment" ColumnName="payment" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

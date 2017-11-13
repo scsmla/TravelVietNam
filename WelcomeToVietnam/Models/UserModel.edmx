@@ -15,10 +15,7 @@
           <Property Name="Gender" Type="nvarchar" MaxLength="10" />
           <Property Name="Age" Type="int" />
           <Property Name="Email" Type="nvarchar" MaxLength="50" />
-          <Property Name="Date" Type="date" />
-          <Property Name="Hotel" Type="nvarchar" MaxLength="30" />
           <Property Name="Feedback" Type="nvarchar" MaxLength="100" />
-          <Property Name="PayMoney" Type="nvarchar" MaxLength="1" />
         </EntityType>
         <EntityContainer Name="UserStoreContainer">
           <EntitySet Name="userTravel" EntityType="Self.userTravel" Schema="dbo" store:Type="Tables" />
@@ -37,10 +34,7 @@
           <Property Name="Gender" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
           <Property Name="Age" Type="Int32" />
           <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Date" Type="DateTime" Precision="0" />
-          <Property Name="Hotel" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
           <Property Name="Feedback" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="PayMoney" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityContainer Name="UserdbContext" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="userTravel" EntityType="User.User" />
@@ -54,10 +48,7 @@
           <EntitySetMapping Name="userTravel">
             <EntityTypeMapping TypeName="User.User">
               <MappingFragment StoreEntitySet="userTravel">
-                <ScalarProperty Name="PayMoney" ColumnName="PayMoney" />
                 <ScalarProperty Name="Feedback" ColumnName="Feedback" />
-                <ScalarProperty Name="Hotel" ColumnName="Hotel" />
-                <ScalarProperty Name="Date" ColumnName="Date" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="Username" ColumnName="Username" />
                 <ScalarProperty Name="Password" ColumnName="Password" />
