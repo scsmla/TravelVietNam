@@ -185,6 +185,7 @@ namespace WelcomeToVietnam.Controllers
             }
             return RedirectToAction("Login", "Home");
         }
+
         [HttpGet]
         public ActionResult BookHotel()
         {
@@ -198,6 +199,7 @@ namespace WelcomeToVietnam.Controllers
             return RedirectToAction("Login", "Home");
 
         }
+
         public ActionResult BookHotelDetails(int id)
         {
             if (Session["ID"] != null)
@@ -215,34 +217,43 @@ namespace WelcomeToVietnam.Controllers
         [HttpPost]
         public ActionResult BookHotelDetails(string quantityChildren,string quantityAdults,DateTime checkInDate,DateTime checkOutDate)
         {
-            if(ModelState.IsValid)
+            if (Session["ID"] != null)
             {
-                userTravelData usertraveldata = new userTravelData();
-                usertraveldata.adult = Convert.ToInt32(quantityAdults);
-                usertraveldata.children = Convert.ToInt32(quantityChildren);
-                usertraveldata.checkinDate = checkInDate;
-                usertraveldata.checkoutDate = checkOutDate;
-                Hotel hotel = db.Hotel.Where(x => x.ID == currentHotelId).FirstOrDefault();
-                Place place = db.Place.Where(x => x.ID == currentPlaceId).FirstOrDefault();
-                usertraveldata.place = place.Name.ToString();
-                usertraveldata.Hotel = hotel.Name.ToString();
-                string username = Session["Username"].ToString();
-                usertraveldata.username = username;
-                usertraveldata.payment = (Convert.ToInt32((checkOutDate - checkInDate).TotalDays) + 1) * Convert.ToInt32(hotel.Price);
-                userTravelDatadb.userTravelData.Add(usertraveldata);
-                userTravelDatadb.SaveChanges();
-                ModelState.Clear();
+                if (ModelState.IsValid)
+                {
+                    userTravelData usertraveldata = new userTravelData();
+                    usertraveldata.adult = Convert.ToInt32(quantityAdults);
+                    usertraveldata.children = Convert.ToInt32(quantityChildren);
+                    usertraveldata.checkinDate = checkInDate;
+                    usertraveldata.checkoutDate = checkOutDate;
+                    Hotel hotel = db.Hotel.Where(x => x.ID == currentHotelId).FirstOrDefault();
+                    Place place = db.Place.Where(x => x.ID == currentPlaceId).FirstOrDefault();
+                    usertraveldata.place = place.Name.ToString();
+                    usertraveldata.Hotel = hotel.Name.ToString();
+                    string username = Session["Username"].ToString();
+                    usertraveldata.username = username;
+                    usertraveldata.payment = (Convert.ToInt32((checkOutDate - checkInDate).TotalDays) + 1) * Convert.ToInt32(hotel.Price);
+                    userTravelDatadb.userTravelData.Add(usertraveldata);
+                    userTravelDatadb.SaveChanges();
+                    ModelState.Clear();
+                }
+                return RedirectToAction("UserPage", "User");
             }
-            return RedirectToAction("UserPage", "User");
+            else
+                return RedirectToAction("Login", "Home");
+            
         }
 
         [HttpGet]
         public ActionResult UserProfile()
         {
-           
-            string username = Session["Username"].ToString();
-            var user = userdb.userTravel.Where(x => x.Username == username).FirstOrDefault();
-            return View(user);
+            if (Session["ID"] != null)
+            {
+                string username = Session["Username"].ToString();
+                var user = userdb.userTravel.Where(x => x.Username == username).FirstOrDefault();
+                return View(user);
+            }
+            return RedirectToAction("Login", "Home");
         }
 
         public ActionResult Logout()
@@ -252,6 +263,73 @@ namespace WelcomeToVietnam.Controllers
             return RedirectToAction("HomePage", "Home");
         }
 
-       
+        [HttpPost]
+        public JsonResult addRatingPlaceTable(float rating)
+        {
+            Place currentRatedplace = db.Place.Where(x => x.ID == currentPlaceId).FirstOrDefault();
+            string username = Session["Username"].ToString();
+            if(!userTravelDatadb.userRatingPlace.Where(x => x.Username == username && x.Place == currentRatedplace.Name).Any())
+            {
+                //Alter userRatingPlace table
+                userRatingPlace userRating = new userRatingPlace();
+                userRating.Username = username;
+                userRating.Place = currentRatedplace.Name;
+                userRating.RatingPlace = rating;
+                userTravelDatadb.userRatingPlace.Add(userRating);
+                userTravelDatadb.SaveChanges();
+
+                //Alter Place table
+                currentRatedplace.totalRatings = currentRatedplace.totalRatings + 1;
+                currentRatedplace.Rating = ((currentRatedplace.Rating) * (currentRatedplace.totalRatings - 1) + rating) / currentRatedplace.totalRatings;
+                db.SaveChanges();
+            }
+            else
+            {
+                //Alter userRatingPlace table
+                userRatingPlace userRated = userTravelDatadb.userRatingPlace.Where(x => x.Username == username && x.Place == currentRatedplace.Name).FirstOrDefault();
+                userRated.RatingPlace = rating;
+                userTravelDatadb.SaveChanges();
+
+                //Alter Place table
+                currentRatedplace.Rating = ((currentRatedplace.Rating) * (currentRatedplace.totalRatings) + rating) / currentRatedplace.totalRatings;
+                db.SaveChanges();
+            }
+            return Json("Response from Rating System");
+        }
+
+        [HttpPost]
+        public JsonResult addRatingHotelTable(float rating)
+        {
+            Hotel currentRatedHotel = db.Hotel.Where(x => x.ID == currentHotelId).FirstOrDefault();
+            string username = Session["Username"].ToString();
+            if (!userTravelDatadb.userRatingHotel.Where(x => x.Username == username && x.Hotel == currentRatedHotel.Name).Any())
+            {
+                //Alter userRatingPlace table
+                userRatingHotel userRating = new userRatingHotel();
+                userRating.Username = username;
+                userRating.Hotel = currentRatedHotel.Name;
+                userRating.RatingHotel = rating;
+                userTravelDatadb.userRatingHotel.Add(userRating);
+                userTravelDatadb.SaveChanges();
+
+                //Alter Place table
+                currentRatedHotel.totalRatings = currentRatedHotel.totalRatings + 1;
+                currentRatedHotel.Rating = ((currentRatedHotel.Rating) * (currentRatedHotel.totalRatings - 1) + rating) / currentRatedHotel.totalRatings;
+                db.SaveChanges();
+            }
+            else
+            {
+                //Alter userRatingPlace table
+                userRatingHotel userRated = userTravelDatadb.userRatingHotel.Where(x => x.Username == username && x.Hotel == currentRatedHotel.Name).FirstOrDefault();
+                userRated.RatingHotel = rating;
+                userTravelDatadb.SaveChanges();
+
+                //Alter Place table
+                currentRatedHotel.Rating = ((currentRatedHotel.Rating) * (currentRatedHotel.totalRatings) + rating) / currentRatedHotel.totalRatings;
+                db.SaveChanges();
+            }
+            return Json("Response from Rating System");
+        }
+
     }
 }

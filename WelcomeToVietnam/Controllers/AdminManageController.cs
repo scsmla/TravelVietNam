@@ -74,9 +74,7 @@ namespace WelcomeToVietnam.Controllers
         public ActionResult CreatePlace()
         {
             if (Session["UserAdmin"] != null)
-            {
-
-
+            { 
                 ViewBag.Area = new SelectList(db.Area, "AreaTravelling", "AreaTravelling");
                 return View();
             }
@@ -89,10 +87,12 @@ namespace WelcomeToVietnam.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult CreatePlace([Bind(Include = "ID,Name,Location,Area,Photos,CurrentStatus,VisitorsPerYear,Rating")] Place place)
+        public ActionResult CreatePlace([Bind(Include = "Name,Location,Area,Photos,CurrentStatus,VisitorsPerYear")] Place place)
         {
             if (ModelState.IsValid)
             {
+                place.totalRatings = 0;
+                place.Rating = 0;
                 db.Place.Add(place);
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -130,7 +130,7 @@ namespace WelcomeToVietnam.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult EditPlace([Bind(Include = "ID,Name,Location,Area,Photos,CurrentStatus,VisitorsPerYear,Rating")] Place place)
+        public ActionResult EditPlace([Bind(Include = "Name,Location,Area,Photos,CurrentStatus,VisitorsPerYear")] Place place)
         {
             if (ModelState.IsValid)
             {

@@ -385,6 +385,12 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>UserModel.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Models\userRatingHotel.cs">
+      <DependentUpon>UserTravelData.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\userRatingPlace.cs">
+      <DependentUpon>UserTravelData.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\UserTravelData.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

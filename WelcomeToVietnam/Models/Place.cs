@@ -27,7 +27,8 @@ namespace WelcomeToVietnam.Models
         public byte[] Photos { get; set; }
         public string CurrentStatus { get; set; }
         public Nullable<int> VisitorsPerYear { get; set; }
-        public Nullable<int> Rating { get; set; }
+        public Nullable<float> Rating { get; set; }
+        public Nullable<int> totalRatings { get; set; }
     
         public virtual Area Area1 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

@@ -6,10 +6,10 @@
     <edmx:Diagrams>
       <Diagram DiagramId="4fdd5658333c4336a662f4999bccf357" Name="Diagram1">
         <EntityTypeShape EntityType="Area.Area" Width="1.5" PointX="0.75" PointY="1.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="Area.Place" Width="1.5" PointX="6.875" PointY="1.875" />
+        <EntityTypeShape EntityType="Area.Hotel" Width="1.5" PointX="6.125" PointY="1" />
+        <EntityTypeShape EntityType="Area.Place" Width="1.5" PointX="3.875" PointY="1" />
         <AssociationConnector Association="Area.FK__Place__Area__3A81B327" />
-        <EntityTypeShape EntityType="Area.Hotel" Width="1.5" PointX="4.375" PointY="0.5" />
-        <AssociationConnector Association="Area.FK_Hotel_Place" />
+        <AssociationConnector Association="Area.FK_Hotel_Place1" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

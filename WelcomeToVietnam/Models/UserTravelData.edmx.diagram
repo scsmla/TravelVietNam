@@ -6,6 +6,8 @@
     <edmx:Diagrams>
       <Diagram DiagramId="f43a58d4cc8b4efa8792f3cad54033b4" Name="Diagram1">
         <EntityTypeShape EntityType="UserTravelDataModel.userTravelData" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="UserTravelDataModel.userRatingHotel" Width="1.5" PointX="3.375" PointY="0.75" />
+        <EntityTypeShape EntityType="UserTravelDataModel.userRatingPlace" Width="1.5" PointX="3.375" PointY="3.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

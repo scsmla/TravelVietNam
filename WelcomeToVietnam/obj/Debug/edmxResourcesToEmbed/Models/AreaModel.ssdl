@@ -17,8 +17,9 @@
     <Property Name="PhoneNumber" Type="nvarchar" MaxLength="12" />
     <Property Name="Price" Type="nvarchar" MaxLength="15" />
     <Property Name="EmptyRooms" Type="int" />
-    <Property Name="Rating" Type="int" />
+    <Property Name="Rating" Type="real" />
     <Property Name="Photos" Type="varbinary(max)" />
+    <Property Name="totalRatings" Type="int" />
   </EntityType>
   <EntityType Name="Place">
     <Key>
@@ -31,7 +32,8 @@
     <Property Name="Photos" Type="varbinary(max)" />
     <Property Name="CurrentStatus" Type="nvarchar" MaxLength="50" />
     <Property Name="VisitorsPerYear" Type="int" />
-    <Property Name="Rating" Type="int" />
+    <Property Name="Rating" Type="real" />
+    <Property Name="totalRatings" Type="int" />
   </EntityType>
   <Association Name="FK__Place__Area__3A81B327">
     <End Role="Area" Type="Self.Area" Multiplicity="0..1" />
@@ -45,7 +47,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_Hotel_Place">
+  <Association Name="FK_Hotel_Place1">
     <End Role="Place" Type="Self.Place" Multiplicity="0..1" />
     <End Role="Hotel" Type="Self.Hotel" Multiplicity="*" />
     <ReferentialConstraint>
@@ -65,7 +67,7 @@
       <End Role="Area" EntitySet="Area" />
       <End Role="Place" EntitySet="Place" />
     </AssociationSet>
-    <AssociationSet Name="FK_Hotel_Place" Association="Self.FK_Hotel_Place">
+    <AssociationSet Name="FK_Hotel_Place1" Association="Self.FK_Hotel_Place1">
       <End Role="Place" EntitySet="Place" />
       <End Role="Hotel" EntitySet="Hotel" />
     </AssociationSet>

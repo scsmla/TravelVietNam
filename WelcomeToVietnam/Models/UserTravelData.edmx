@@ -4,7 +4,25 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="UserTravelDataModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="UserTravelDataModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="userRatingHotel">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Username" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Hotel" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="RatingHotel" Type="real" />
+        </EntityType>
+        <EntityType Name="userRatingPlace">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Username" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Place" Type="nvarchar" MaxLength="30" />
+          <Property Name="RatingPlace" Type="real" />
+        </EntityType>
         <EntityType Name="userTravelData">
           <Key>
             <PropertyRef Name="ID" />
@@ -21,10 +39,11 @@
           <Property Name="payment" Type="int" />
         </EntityType>
         <EntityContainer Name="UserTravelDataModelStoreContainer">
+          <EntitySet Name="userRatingHotel" EntityType="Self.userRatingHotel" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="userRatingPlace" EntityType="Self.userRatingPlace" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="userTravelData" EntityType="Self.userTravelData" Schema="dbo" store:Type="Tables" />
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="UserTravelDataModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -45,7 +64,27 @@
         </EntityType>
         <EntityContainer Name="UserTravelDbContext" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="userTravelData" EntityType="Self.userTravelData" />
+          <EntitySet Name="userRatingHotel" EntityType="UserTravelDataModel.userRatingHotel" />
+          <EntitySet Name="userRatingPlace" EntityType="UserTravelDataModel.userRatingPlace" />
         </EntityContainer>
+        <EntityType Name="userRatingHotel">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Username" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Hotel" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="RatingHotel" Type="Single" />
+        </EntityType>
+        <EntityType Name="userRatingPlace">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Username" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Place" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="RatingPlace" Type="Single" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -65,6 +104,26 @@
                 <ScalarProperty Name="quantityRoom" ColumnName="quantityRoom" />
                 <ScalarProperty Name="Hotel" ColumnName="Hotel" />
                 <ScalarProperty Name="payment" ColumnName="payment" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="userRatingHotel">
+            <EntityTypeMapping TypeName="UserTravelDataModel.userRatingHotel">
+              <MappingFragment StoreEntitySet="userRatingHotel">
+                <ScalarProperty Name="RatingHotel" ColumnName="RatingHotel" />
+                <ScalarProperty Name="Hotel" ColumnName="Hotel" />
+                <ScalarProperty Name="Username" ColumnName="Username" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="userRatingPlace">
+            <EntityTypeMapping TypeName="UserTravelDataModel.userRatingPlace">
+              <MappingFragment StoreEntitySet="userRatingPlace">
+                <ScalarProperty Name="RatingPlace" ColumnName="RatingPlace" />
+                <ScalarProperty Name="Place" ColumnName="Place" />
+                <ScalarProperty Name="Username" ColumnName="Username" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

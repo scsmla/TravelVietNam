@@ -22,8 +22,9 @@
           <Property Name="PhoneNumber" Type="nvarchar" MaxLength="12" />
           <Property Name="Price" Type="nvarchar" MaxLength="15" />
           <Property Name="EmptyRooms" Type="int" />
-          <Property Name="Rating" Type="int" />
+          <Property Name="Rating" Type="real" />
           <Property Name="Photos" Type="varbinary(max)" />
+          <Property Name="totalRatings" Type="int" />
         </EntityType>
         <EntityType Name="Place">
           <Key>
@@ -36,7 +37,8 @@
           <Property Name="Photos" Type="varbinary(max)" />
           <Property Name="CurrentStatus" Type="nvarchar" MaxLength="50" />
           <Property Name="VisitorsPerYear" Type="int" />
-          <Property Name="Rating" Type="int" />
+          <Property Name="Rating" Type="real" />
+          <Property Name="totalRatings" Type="int" />
         </EntityType>
         <Association Name="FK__Place__Area__3A81B327">
           <End Role="Area" Type="Self.Area" Multiplicity="0..1" />
@@ -50,7 +52,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Hotel_Place">
+        <Association Name="FK_Hotel_Place1">
           <End Role="Place" Type="Self.Place" Multiplicity="0..1" />
           <End Role="Hotel" Type="Self.Hotel" Multiplicity="*" />
           <ReferentialConstraint>
@@ -70,7 +72,7 @@
             <End Role="Area" EntitySet="Area" />
             <End Role="Place" EntitySet="Place" />
           </AssociationSet>
-          <AssociationSet Name="FK_Hotel_Place" Association="Self.FK_Hotel_Place">
+          <AssociationSet Name="FK_Hotel_Place1" Association="Self.FK_Hotel_Place1">
             <End Role="Place" EntitySet="Place" />
             <End Role="Hotel" EntitySet="Hotel" />
           </AssociationSet>
@@ -88,17 +90,33 @@
         </EntityType>
         <EntityContainer Name="AreadbContext" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Area" EntityType="Self.Area" />
+          <EntitySet Name="Hotel" EntityType="Area.Hotel" />
           <EntitySet Name="Place" EntityType="Area.Place" />
           <AssociationSet Name="FK__Place__Area__3A81B327" Association="Area.FK__Place__Area__3A81B327">
             <End Role="Area" EntitySet="Area" />
             <End Role="Place" EntitySet="Place" />
           </AssociationSet>
-          <EntitySet Name="Hotel" EntityType="Area.Hotel" />
-          <AssociationSet Name="FK_Hotel_Place" Association="Area.FK_Hotel_Place">
+          <AssociationSet Name="FK_Hotel_Place1" Association="Area.FK_Hotel_Place1">
             <End Role="Place" EntitySet="Place" />
             <End Role="Hotel" EntitySet="Hotel" />
           </AssociationSet>
         </EntityContainer>
+        <EntityType Name="Hotel">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Place" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="Address" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="PhoneNumber" Type="String" MaxLength="12" FixedLength="false" Unicode="true" />
+          <Property Name="Price" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="EmptyRooms" Type="Int32" />
+          <Property Name="Rating" Type="Single" />
+          <Property Name="Photos" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="totalRatings" Type="Int32" />
+          <NavigationProperty Name="Place1" Relationship="Area.FK_Hotel_Place1" FromRole="Hotel" ToRole="Place" />
+        </EntityType>
         <EntityType Name="Place">
           <Key>
             <PropertyRef Name="Name" />
@@ -107,12 +125,13 @@
           <Property Name="Name" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="true" />
           <Property Name="Location" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
           <Property Name="Area" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Area1" Relationship="Area.FK__Place__Area__3A81B327" FromRole="Place" ToRole="Area" />
           <Property Name="Photos" Type="Binary" MaxLength="Max" FixedLength="false" />
           <Property Name="CurrentStatus" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="VisitorsPerYear" Type="Int32" />
-          <Property Name="Rating" Type="Int32" />
-          <NavigationProperty Name="Hotel" Relationship="Area.FK_Hotel_Place" FromRole="Place" ToRole="Hotel" />
+          <Property Name="Rating" Type="Single" />
+          <Property Name="totalRatings" Type="Int32" />
+          <NavigationProperty Name="Area1" Relationship="Area.FK__Place__Area__3A81B327" FromRole="Place" ToRole="Area" />
+          <NavigationProperty Name="Hotel" Relationship="Area.FK_Hotel_Place1" FromRole="Place" ToRole="Hotel" />
         </EntityType>
         <Association Name="FK__Place__Area__3A81B327">
           <End Type="Area.Area" Role="Area" Multiplicity="0..1" />
@@ -126,22 +145,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityType Name="Hotel">
-          <Key>
-            <PropertyRef Name="ID" />
-          </Key>
-          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Place" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
-          <Property Name="Address" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="PhoneNumber" Type="String" MaxLength="12" FixedLength="false" Unicode="true" />
-          <Property Name="Price" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
-          <Property Name="EmptyRooms" Type="Int32" />
-          <Property Name="Rating" Type="Int32" />
-          <Property Name="Photos" Type="Binary" MaxLength="Max" FixedLength="false" />
-          <NavigationProperty Name="Place1" Relationship="Area.FK_Hotel_Place" FromRole="Hotel" ToRole="Place" />
-        </EntityType>
-        <Association Name="FK_Hotel_Place">
+        <Association Name="FK_Hotel_Place1">
           <End Type="Area.Place" Role="Place" Multiplicity="0..1" />
           <End Type="Area.Hotel" Role="Hotel" Multiplicity="*" />
           <ReferentialConstraint>
@@ -166,23 +170,10 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Place">
-            <EntityTypeMapping TypeName="Area.Place">
-              <MappingFragment StoreEntitySet="Place">
-                <ScalarProperty Name="Rating" ColumnName="Rating" />
-                <ScalarProperty Name="VisitorsPerYear" ColumnName="VisitorsPerYear" />
-                <ScalarProperty Name="CurrentStatus" ColumnName="CurrentStatus" />
-                <ScalarProperty Name="Photos" ColumnName="Photos" />
-                <ScalarProperty Name="Area" ColumnName="Area" />
-                <ScalarProperty Name="Location" ColumnName="Location" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="ID" ColumnName="ID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="Hotel">
             <EntityTypeMapping TypeName="Area.Hotel">
               <MappingFragment StoreEntitySet="Hotel">
+                <ScalarProperty Name="totalRatings" ColumnName="totalRatings" />
                 <ScalarProperty Name="Photos" ColumnName="Photos" />
                 <ScalarProperty Name="Rating" ColumnName="Rating" />
                 <ScalarProperty Name="EmptyRooms" ColumnName="EmptyRooms" />
@@ -190,6 +181,21 @@
                 <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
                 <ScalarProperty Name="Address" ColumnName="Address" />
                 <ScalarProperty Name="Place" ColumnName="Place" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Place">
+            <EntityTypeMapping TypeName="Area.Place">
+              <MappingFragment StoreEntitySet="Place">
+                <ScalarProperty Name="totalRatings" ColumnName="totalRatings" />
+                <ScalarProperty Name="Rating" ColumnName="Rating" />
+                <ScalarProperty Name="VisitorsPerYear" ColumnName="VisitorsPerYear" />
+                <ScalarProperty Name="CurrentStatus" ColumnName="CurrentStatus" />
+                <ScalarProperty Name="Photos" ColumnName="Photos" />
+                <ScalarProperty Name="Area" ColumnName="Area" />
+                <ScalarProperty Name="Location" ColumnName="Location" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
               </MappingFragment>

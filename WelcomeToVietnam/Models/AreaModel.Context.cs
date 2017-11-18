@@ -26,7 +26,7 @@ namespace WelcomeToVietnam.Models
         }
     
         public virtual DbSet<Area> Area { get; set; }
-        public virtual DbSet<Place> Place { get; set; }
         public virtual DbSet<Hotel> Hotel { get; set; }
+        public virtual DbSet<Place> Place { get; set; }
     }
 }

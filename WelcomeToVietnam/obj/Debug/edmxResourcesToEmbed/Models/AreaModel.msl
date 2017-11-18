@@ -8,23 +8,10 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="Place">
-      <EntityTypeMapping TypeName="Area.Place">
-        <MappingFragment StoreEntitySet="Place">
-          <ScalarProperty Name="Rating" ColumnName="Rating" />
-          <ScalarProperty Name="VisitorsPerYear" ColumnName="VisitorsPerYear" />
-          <ScalarProperty Name="CurrentStatus" ColumnName="CurrentStatus" />
-          <ScalarProperty Name="Photos" ColumnName="Photos" />
-          <ScalarProperty Name="Area" ColumnName="Area" />
-          <ScalarProperty Name="Location" ColumnName="Location" />
-          <ScalarProperty Name="Name" ColumnName="Name" />
-          <ScalarProperty Name="ID" ColumnName="ID" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="Hotel">
       <EntityTypeMapping TypeName="Area.Hotel">
         <MappingFragment StoreEntitySet="Hotel">
+          <ScalarProperty Name="totalRatings" ColumnName="totalRatings" />
           <ScalarProperty Name="Photos" ColumnName="Photos" />
           <ScalarProperty Name="Rating" ColumnName="Rating" />
           <ScalarProperty Name="EmptyRooms" ColumnName="EmptyRooms" />
@@ -32,6 +19,21 @@
           <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
           <ScalarProperty Name="Address" ColumnName="Address" />
           <ScalarProperty Name="Place" ColumnName="Place" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Place">
+      <EntityTypeMapping TypeName="Area.Place">
+        <MappingFragment StoreEntitySet="Place">
+          <ScalarProperty Name="totalRatings" ColumnName="totalRatings" />
+          <ScalarProperty Name="Rating" ColumnName="Rating" />
+          <ScalarProperty Name="VisitorsPerYear" ColumnName="VisitorsPerYear" />
+          <ScalarProperty Name="CurrentStatus" ColumnName="CurrentStatus" />
+          <ScalarProperty Name="Photos" ColumnName="Photos" />
+          <ScalarProperty Name="Area" ColumnName="Area" />
+          <ScalarProperty Name="Location" ColumnName="Location" />
           <ScalarProperty Name="Name" ColumnName="Name" />
           <ScalarProperty Name="ID" ColumnName="ID" />
         </MappingFragment>

@@ -26,5 +26,7 @@ namespace WelcomeToVietnam.Models
         }
     
         public virtual DbSet<userTravelData> userTravelData { get; set; }
+        public virtual DbSet<userRatingHotel> userRatingHotel { get; set; }
+        public virtual DbSet<userRatingPlace> userRatingPlace { get; set; }
     }
 }

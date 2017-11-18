@@ -17,5 +17,25 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="userRatingHotel">
+      <EntityTypeMapping TypeName="UserTravelDataModel.userRatingHotel">
+        <MappingFragment StoreEntitySet="userRatingHotel">
+          <ScalarProperty Name="RatingHotel" ColumnName="RatingHotel" />
+          <ScalarProperty Name="Hotel" ColumnName="Hotel" />
+          <ScalarProperty Name="Username" ColumnName="Username" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="userRatingPlace">
+      <EntityTypeMapping TypeName="UserTravelDataModel.userRatingPlace">
+        <MappingFragment StoreEntitySet="userRatingPlace">
+          <ScalarProperty Name="RatingPlace" ColumnName="RatingPlace" />
+          <ScalarProperty Name="Place" ColumnName="Place" />
+          <ScalarProperty Name="Username" ColumnName="Username" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
   </EntityContainerMapping>
 </Mapping>

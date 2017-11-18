@@ -8,9 +8,9 @@
 <link rel="stylesheet" type="text/css" href="~/Content/themes/DetailPage.css" />
 
 
- <hr />
+<hr />
 <div class="col-sm-8">
-    
+
     <dl class="dl-horizontal">
         <dt>
             @Html.DisplayNameFor(model => model.Name)
@@ -31,7 +31,7 @@
             @Html.DisplayNameFor(model => model.Price)
         </dt>
         <dd>
-            @Html.DisplayFor(model => model.Price)
+            @Html.DisplayFor(model => model.Price)<text>$</text>
         </dd>
 
         <dt>
@@ -41,23 +41,50 @@
             @Html.DisplayFor(model => model.PhoneNumber)
         </dd>
 
-       
+
         <dt>
             @Html.DisplayNameFor(model => model.Photos)
         </dt>
         <dd>
             <img src="@ViewBag.SourcePhoto" width="200" height="200" />
-        </dd>   
-       
+        </dd>
+
 
     </dl>
+    <div style="margin-left: 170px">
+        <h3 style="color:white">Rating this place</h3>
+        <fieldset class="rate" id="fieldSetRating">
+            <input type="radio" id="10" name="rating" value="10" />
+            <label for="10" title="5 stars"></label>
+            <input type="radio" id="9" name="rating" value="9" />
+            <label class="half" for="9" title="4 1/2 stars"></label>
+            <input type="radio" id="8" name="rating" value="8" />
+            <label for="8" title="4 stars"></label>
+            <input type="radio" id="7" name="rating" value="7" />
+            <label class="half" for="7" title="3 1/2 stars"></label>
+            <input type="radio" id="6" name="rating" value="6" />
+            <label for="6" title="3 stars"></label>
+            <input type="radio" id="5" name="rating" value="5" />
+            <label class="half" for="5" title="2 1/2 stars"></label>
+            <input type="radio" id="4" name="rating" value="4" />
+            <label for="4" title="2 stars"></label>
+            <input type="radio" id="3" name="rating" value="3" />
+            <label class="half" for="3" title="1 1/2 stars"></label>
+            <input type="radio" id="2" name="rating" value="2" />
+            <label for="2" title="1 star"></label>
+            <input type="radio" id="1" name="rating" value="1" />
+            <label class="half" for="1" title="1/2 star"></label>
+            <input type="radio" id="0" name="rating" value="0" />
+            <label for="0" title="No star"></label>
+        </fieldset>
+    </div>
 </div>
 <div class="col-sm-4">
     @using (@Html.BeginForm())
     {
-        @Html.TextBox("checkInDate",null,new { placeholder = "Choose check in date",style = "color:white;margin-bottom:35px" })
-        @Html.TextBox("checkOutDate",null, new { placeholder = "Choose check out date", style = "color:white;margin-bottom:35px" })
-       
+        @Html.TextBox("checkInDate", null, new { placeholder = "Choose check in date", style = "color:white;margin-bottom:35px" })
+        @Html.TextBox("checkOutDate", null, new { placeholder = "Choose check out date", style = "color:white;margin-bottom:35px" })
+
         <p>How many childrens ?</p>
         @Html.DropDownList("quantityChildren", new List<SelectListItem> {
         new SelectListItem {Text = "1",Selected = true },
@@ -79,11 +106,33 @@
         <br />
         <br />
         <br />
-        <input type="submit" id ="submitButton" value="Confirm" style="background-color:blue; height: 50px; color: white; width: 220px " class="button" />
+        <input type="submit" id="submitButton" value="Confirm" style="background-color:blue; height: 50px; color: white; width: 220px " class="button" />
     }
 </div>
-    <script>
-        document.getElementById("submitButton").addEventListener("click", function () {
-            alert("You have booked a hotel ! Thank you !")
-        });
-    </script>
+<script>
+    document.getElementById("submitButton").addEventListener("click", function () {
+        alert("You have booked a hotel ! Thank you !")
+    });
+    var rat = 0.00;
+    $("body").click(function (event) {
+        if ($(event.target).is("input")) {
+            rat = parseInt(event.target.id) / 2;
+            alert("You have rated this hotel " + rat + "/5.0");
+        }
+    });
+
+
+    $("#fieldSetRating").click(function () {
+        rat = parseFloat(rat).toFixed(2);
+        var dataToPost = { 'rating': Number(rat) }
+        $.ajax(
+        {
+            url: '/User/addRatingHotelTable',
+            dataType: "json",
+            type: "POST",
+            contentType: 'application/json; charset=utf-8',
+            data: JSON.stringify(dataToPost)
+        })
+    });
+
+</script>
