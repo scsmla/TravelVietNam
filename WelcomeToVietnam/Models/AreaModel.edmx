@@ -21,7 +21,6 @@
           <Property Name="Address" Type="nvarchar" MaxLength="100" />
           <Property Name="PhoneNumber" Type="nvarchar" MaxLength="12" />
           <Property Name="Price" Type="nvarchar" MaxLength="15" />
-          <Property Name="EmptyRooms" Type="int" />
           <Property Name="Rating" Type="real" />
           <Property Name="Photos" Type="varbinary(max)" />
           <Property Name="totalRatings" Type="int" />
@@ -111,7 +110,6 @@
           <Property Name="Address" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="PhoneNumber" Type="String" MaxLength="12" FixedLength="false" Unicode="true" />
           <Property Name="Price" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
-          <Property Name="EmptyRooms" Type="Int32" />
           <Property Name="Rating" Type="Single" />
           <Property Name="Photos" Type="Binary" MaxLength="Max" FixedLength="false" />
           <Property Name="totalRatings" Type="Int32" />
@@ -176,7 +174,6 @@
                 <ScalarProperty Name="totalRatings" ColumnName="totalRatings" />
                 <ScalarProperty Name="Photos" ColumnName="Photos" />
                 <ScalarProperty Name="Rating" ColumnName="Rating" />
-                <ScalarProperty Name="EmptyRooms" ColumnName="EmptyRooms" />
                 <ScalarProperty Name="Price" ColumnName="Price" />
                 <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
                 <ScalarProperty Name="Address" ColumnName="Address" />

@@ -1,0 +1,16 @@
+﻿input::placeholder{
+	color:white;
+
+}
+.inputform
+{
+	border-radius: 30px;
+	padding: 20px;
+    color:white ;
+    background : transparent;
+    width : 350px; 
+    height: 50px
+}
+.button{
+	border-radius: 20px;
+}

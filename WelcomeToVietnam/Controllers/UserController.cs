@@ -18,6 +18,7 @@ namespace WelcomeToVietnam.Controllers
         private UserTravelDbContext userTravelDatadb = new UserTravelDbContext();
         private static int currentPlaceId = 0;
         private static int currentHotelId = 0;
+        private static int currentTourId = 0;
         public ActionResult UserPage()
         {
             if (Session["ID"] != null)
@@ -36,7 +37,7 @@ namespace WelcomeToVietnam.Controllers
                 {
                     Place place = db.Place.Where(x => x.Name == searchTerm).FirstOrDefault();
                     int id = place.ID;
-                    return RedirectToAction("DetailsPlaceAndBookSeat", "User",new { id = id });
+                    return RedirectToAction("DetailsPlaceAndBookSeat", "User", new { id = id });
                 }
                 else
                 {
@@ -215,7 +216,7 @@ namespace WelcomeToVietnam.Controllers
         }
 
         [HttpPost]
-        public ActionResult BookHotelDetails(string quantityChildren,string quantityAdults,DateTime checkInDate,DateTime checkOutDate)
+        public ActionResult BookHotelDetails(string quantityChildren, string quantityAdults, DateTime checkInDate, DateTime checkOutDate,string quantityRooms)
         {
             if (Session["ID"] != null)
             {
@@ -226,6 +227,7 @@ namespace WelcomeToVietnam.Controllers
                     usertraveldata.children = Convert.ToInt32(quantityChildren);
                     usertraveldata.checkinDate = checkInDate;
                     usertraveldata.checkoutDate = checkOutDate;
+                    usertraveldata.quantityRoom = Convert.ToInt32(quantityRooms);
                     Hotel hotel = db.Hotel.Where(x => x.ID == currentHotelId).FirstOrDefault();
                     Place place = db.Place.Where(x => x.ID == currentPlaceId).FirstOrDefault();
                     usertraveldata.place = place.Name.ToString();
@@ -241,7 +243,7 @@ namespace WelcomeToVietnam.Controllers
             }
             else
                 return RedirectToAction("Login", "Home");
-            
+
         }
 
         [HttpGet]
@@ -268,7 +270,7 @@ namespace WelcomeToVietnam.Controllers
         {
             Place currentRatedplace = db.Place.Where(x => x.ID == currentPlaceId).FirstOrDefault();
             string username = Session["Username"].ToString();
-            if(!userTravelDatadb.userRatingPlace.Where(x => x.Username == username && x.Place == currentRatedplace.Name).Any())
+            if (!userTravelDatadb.userRatingPlace.Where(x => x.Username == username && x.Place == currentRatedplace.Name).Any())
             {
                 //Alter userRatingPlace table
                 userRatingPlace userRating = new userRatingPlace();
@@ -291,7 +293,7 @@ namespace WelcomeToVietnam.Controllers
                 userTravelDatadb.SaveChanges();
 
                 //Alter Place table
-                currentRatedplace.Rating = ((currentRatedplace.Rating) * (currentRatedplace.totalRatings) + rating) / currentRatedplace.totalRatings;
+                currentRatedplace.Rating = ((currentRatedplace.Rating) * (currentRatedplace.totalRatings) + rating - userRated.RatingPlace) / currentRatedplace.totalRatings;
                 db.SaveChanges();
             }
             return Json("Response from Rating System");
@@ -325,10 +327,82 @@ namespace WelcomeToVietnam.Controllers
                 userTravelDatadb.SaveChanges();
 
                 //Alter Place table
-                currentRatedHotel.Rating = ((currentRatedHotel.Rating) * (currentRatedHotel.totalRatings) + rating) / currentRatedHotel.totalRatings;
+                currentRatedHotel.Rating = ((currentRatedHotel.Rating) * (currentRatedHotel.totalRatings) + rating - userRated.RatingHotel) / currentRatedHotel.totalRatings;
                 db.SaveChanges();
             }
             return Json("Response from Rating System");
+        }
+
+        public ActionResult showTour()
+        {
+            if (Session["ID"] != null)
+            {
+                string username = Session["Username"].ToString();
+                List<userTravelData> tours = userTravelDatadb.userTravelData.Where(x => x.username == username).ToList();
+                return View(tours);
+            }
+            else
+                return RedirectToAction("Login", "Home");
+        }
+
+        [HttpGet]
+        public ActionResult EditTour(int id)
+        {
+            if (Session["ID"] != null)
+            {
+                currentTourId = id;
+                userTravelData tour = userTravelDatadb.userTravelData.Where(x => x.ID == id).FirstOrDefault();
+                return View(tour);
+            }
+            else
+                return RedirectToAction("Login", "Home");
+        }
+
+        [HttpPost]
+        public ActionResult EditTour(string quantityChildren, string quantityAdults,string quantityRooms, DateTime checkInDate, DateTime checkOutDate)
+        {
+            if (Session["ID"] != null)
+            {
+                if (ModelState.IsValid)
+                {
+                    userTravelData currentTour = userTravelDatadb.userTravelData.Where(x => x.ID == currentTourId).FirstOrDefault();
+                    currentTour.children = Convert.ToInt32(quantityChildren);
+                    currentTour.adult = Convert.ToInt32(quantityAdults);
+                    currentTour.quantityRoom = Convert.ToInt32(quantityRooms);
+                    currentTour.checkinDate = checkInDate;
+                    currentTour.checkoutDate = checkOutDate;
+                    userTravelDatadb.SaveChanges();
+                }
+                return RedirectToAction("showTour","User");
+            }
+            else
+                return RedirectToAction("Login", "Home");
+        }
+
+        public ActionResult DeleteTour(int id)
+        {
+
+            if (Session["ID"] != null)
+            {
+                userTravelData tour = userTravelDatadb.userTravelData.Where(x => x.ID == id).FirstOrDefault();
+                return View(tour);
+            }
+            else
+                return RedirectToAction("Login", "Home");
+        }
+
+        [HttpPost, ActionName("DeleteTour")]
+        [ValidateAntiForgeryToken]
+        public ActionResult DeleteTourConfirmed(int id)
+        {
+            if (Session["ID"] != null)
+            {
+                userTravelData tour = userTravelDatadb.userTravelData.Where(x => x.ID == id).FirstOrDefault();
+                userTravelDatadb.userTravelData.Remove(tour);
+
+                db.SaveChanges();
+            }
+            return RedirectToAction("showTour","User");
         }
 
     }

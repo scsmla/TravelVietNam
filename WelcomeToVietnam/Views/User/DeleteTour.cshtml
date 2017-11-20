@@ -1,0 +1,84 @@
+﻿@model WelcomeToVietnam.Models.userTravelData
+
+@{
+    ViewBag.Title = "DeleteTour";
+    Layout = "~/Views/User/Shared/LayoutUser.cshtml";
+}
+
+<h2>DeleteTour</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>userTravelData</h4>
+    <hr />
+    <dl class="dl-horizontal">
+       
+
+        <dt>
+            @Html.DisplayNameFor(model => model.place)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.place)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.adult)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.adult)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.children)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.children)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.checkinDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.checkinDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.checkoutDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.checkoutDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.quantityRoom)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.quantityRoom)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Hotel)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Hotel)
+        </dd>
+
+      
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "showTour")
+        </div>
+    }
+</div>

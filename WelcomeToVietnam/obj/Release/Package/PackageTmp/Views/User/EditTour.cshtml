@@ -1,0 +1,57 @@
+﻿@model WelcomeToVietnam.Models.userTravelData
+
+@{
+    ViewBag.Title = "EditTour";
+    Layout = "~/Views/User/Shared/LayoutUser.cshtml";
+}
+
+<h2 style="color:white">Edit Tour</h2>
+
+@using (@Html.BeginForm())
+{
+    @Html.TextBox("checkInDate", null, new { placeholder = "Choose check in date", style = "color:black;margin-bottom:35px" })
+    <br />
+    @Html.TextBox("checkOutDate", null, new { placeholder = "Choose check out date", style = "color:black;margin-bottom:35px" })
+
+    <p>How many childrens ?</p>
+    @Html.DropDownList("quantityChildren", new List<SelectListItem> {
+        new SelectListItem {Text = "1",Selected = true },
+        new SelectListItem {Text = "2" },
+        new SelectListItem {Text = "3" },
+        new SelectListItem {Text = "4" },
+        new SelectListItem {Text = "5" },
+        }, new { style = "width:220px" });
+    <br />
+    <br />
+        <br />
+        <p>How many adults ?</p>
+        @Html.DropDownList("quantityAdults", new List<SelectListItem> {
+        new SelectListItem {Text = "1",Selected = true },
+        new SelectListItem {Text = "2" },
+        new SelectListItem {Text = "3" },
+        new SelectListItem {Text = "4" },
+        new SelectListItem {Text = "5" },
+        }, new { style = "width:220px" });
+    <br />
+    <br />
+    <br />
+    <p>How many rooms ?</p>
+    @Html.DropDownList("quantityRooms", new List<SelectListItem> {
+        new SelectListItem {Text = "1",Selected = true },
+        new SelectListItem {Text = "2" },
+        new SelectListItem {Text = "3" },
+        new SelectListItem {Text = "4" },
+        new SelectListItem {Text = "5" },
+        }, new { style = "width:220px" });
+    <br />
+        <br />
+        <br />
+        <input type="submit" id="submitButton" value="Save" style="background-color:blue; height: 50px; color: white; width: 220px " class="button" />
+}
+
+<br />
+<br />
+<br />
+<div>
+    @Html.ActionLink("Back to List", "showTour", null, new { style = "color:white" })
+</div>

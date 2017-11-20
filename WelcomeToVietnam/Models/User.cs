@@ -21,5 +21,6 @@ namespace WelcomeToVietnam.Models
         public Nullable<int> Age { get; set; }
         public string Email { get; set; }
         public string Feedback { get; set; }
+        public string Country { get; set; }
     }
 }

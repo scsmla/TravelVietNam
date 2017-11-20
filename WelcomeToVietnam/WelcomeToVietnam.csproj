@@ -286,6 +286,7 @@
     <Content Include="Models\UserTravelData.edmx.diagram">
       <DependentUpon>UserTravelData.edmx</DependentUpon>
     </Content>
+    <None Include="Properties\PublishProfiles\WelcomeToVietnam20171119115849 - Web Deploy.pubxml" />
     <None Include="scripts\jquery-3.1.1.intellisense.js" />
     <Content Include="scripts\jquery-1.10.2.js" />
     <Content Include="scripts\jquery-1.8.2.js" />
@@ -308,7 +309,9 @@
     <Content Include="scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="scripts\modernizr-2.6.2.js" />
     <Content Include="scripts\userpage.js" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Views\Home\Login.cshtml" />
     <Content Include="Views\Home\Create.cshtml" />
     <Content Include="Views\User\UserPage.cshtml" />
@@ -449,6 +452,13 @@
     <Content Include="Views\User\BookHotelDetails.cshtml" />
     <Content Include="Views\User\Shared\LayoutUser.cshtml" />
     <Content Include="Views\User\UserProfile.cshtml" />
+    <Content Include="Views\AdminManage\EditHotel.cshtml" />
+    <Content Include="Views\AdminManage\DeleteHotel.cshtml" />
+    <Content Include="Views\AdminManage\Shared\LayoutAdmin.cshtml" />
+    <Content Include="Views\User\showTour.cshtml" />
+    <Content Include="Views\User\EditTour.cshtml" />
+    <Content Include="Views\User\DeleteTour.cshtml" />
+    <Content Include="Views\AdminManage\CreateHotel.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

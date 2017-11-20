@@ -46,33 +46,7 @@ namespace WelcomeToVietnam.Controllers
             return Json(!db.userTravel.Any(u => u.Username == Username), JsonRequestBehavior.AllowGet);
         }
 
-        public ActionResult Edit(string id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            User user = db.userTravel.Find(id);
-            if (user == null)
-            {
-                return HttpNotFound();
-            }
-            return View(user);
-        }
         
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Username,Password,Gender,Age,Email")] User user)
-        {
-            if (ModelState.IsValid)
-            {
-                db.Entry(user).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("UserPage");
-            }
-            return View(user);
-        }
-
         public ActionResult Login()
         {
             return View();

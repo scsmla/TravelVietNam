@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="UserTravelDataModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="userTravelData">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="username" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="place" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="adult" Type="Int32" />
+    <Property Name="children" Type="Int32" />
+    <Property Name="checkinDate" Type="DateTime" Precision="0" />
+    <Property Name="checkoutDate" Type="DateTime" Precision="0" />
+    <Property Name="quantityRoom" Type="Int32" />
+    <Property Name="Hotel" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="payment" Type="Int32" />
+  </EntityType>
+  <EntityContainer Name="UserTravelDbContext" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="userTravelData" EntityType="Self.userTravelData" />
+    <EntitySet Name="userRatingHotel" EntityType="UserTravelDataModel.userRatingHotel" />
+    <EntitySet Name="userRatingPlace" EntityType="UserTravelDataModel.userRatingPlace" />
+  </EntityContainer>
+  <EntityType Name="userRatingHotel">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Username" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Hotel" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="RatingHotel" Type="Single" />
+  </EntityType>
+  <EntityType Name="userRatingPlace">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Username" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Place" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="RatingPlace" Type="Single" />
+  </EntityType>
+</Schema>

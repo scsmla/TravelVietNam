@@ -1,0 +1,114 @@
+﻿@model WelcomeToVietnam.Models.Place
+@{
+    Layout = "~/Views/User/Shared/LayoutUser.cshtml";
+    ViewBag.Title = "DetailsPlaceAndBookSeat";
+}
+<link rel="stylesheet" type="text/css" href="~/Content/themes/DetailPage.css" />
+<h2 style="color:white">DetailsPlaceAndBookSeat</h2>
+<div>
+    <hr />
+    <dl class="dl-horizontal col-sm-6">
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CurrentStatus)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CurrentStatus)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Location)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Location)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.VisitorsPerYear)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.VisitorsPerYear)
+        </dd>
+
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Photos)
+        </dt>
+        <dd>
+            <img src="@ViewBag.SourcePhoto" width="200" height="200" />
+        </dd>
+        <dt>
+        </dt>
+        <dd>
+            <div class="row">
+                <div class="col-sm-4">
+                    <p style="border: 1px;border-style: solid;border-radius: 10px;font-size:28px;float: left; color:white">
+                        <a style="color:white" href="@Url.Action("BookHotel","User")">Book Hotel   <span class="glyphicon glyphicon-align-justify"></span></a>
+                    </p>
+                </div>
+            </div>
+        </dd>
+        <dt></dt>
+
+    </dl>
+    <div class="col-sm-6">
+        <h2 style="color:white">Rating this place</h2>
+        <fieldset class="rate" id="fieldSetRating">
+            <input type="radio" id="10" name="rating" value="10" />
+            <label for="10" title="5 stars"></label>
+            <input type="radio" id="9" name="rating" value="9" />
+            <label class="half" for="9" title="4 1/2 stars"></label>
+            <input type="radio" id="8" name="rating" value="8" />
+            <label for="8" title="4 stars"></label>
+            <input type="radio" id="7" name="rating" value="7" />
+            <label class="half" for="7" title="3 1/2 stars"></label>
+            <input type="radio" id="6" name="rating" value="6" />
+            <label for="6" title="3 stars"></label>
+            <input type="radio" id="5" name="rating" value="5" />
+            <label class="half" for="5" title="2 1/2 stars"></label>
+            <input type="radio" id="4" name="rating" value="4" />
+            <label for="4" title="2 stars"></label>
+            <input type="radio" id="3" name="rating" value="3" />
+            <label class="half" for="3" title="1 1/2 stars"></label>
+            <input type="radio" id="2" name="rating" value="2" />
+            <label for="2" title="1 star"></label>
+            <input type="radio" id="1" name="rating" value="1" />
+            <label class="half" for="1" title="1/2 star"></label>
+            <input type="radio" id="0" name="rating" value="0" />
+            <label for="0" title="No star"></label>
+        </fieldset>
+    </div>
+</div>
+<script>
+
+
+    var rat = 0.00;
+    $("body").click(function (event) {
+        if ($(event.target).is("input")) {
+            rat = parseInt(event.target.id) / 2;
+            alert("You have rated this place " + rat + "/5.0");
+        }
+    });
+    
+
+    $("#fieldSetRating").click(function () {
+        rat = parseFloat(rat).toFixed(2);
+        var dataToPost = { 'rating': Number(rat) }
+        $.ajax(
+        {
+            url: '/User/addRatingPlaceTable',
+            dataType: "json",
+            type: "POST",
+            contentType: 'application/json; charset=utf-8',
+            data: JSON.stringify(dataToPost)
+        })
+    });
+
+</script>

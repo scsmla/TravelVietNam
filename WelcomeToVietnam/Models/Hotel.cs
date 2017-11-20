@@ -20,7 +20,6 @@ namespace WelcomeToVietnam.Models
         public string Address { get; set; }
         public string PhoneNumber { get; set; }
         public string Price { get; set; }
-        public Nullable<int> EmptyRooms { get; set; }
         public Nullable<float> Rating { get; set; }
         public byte[] Photos { get; set; }
         public Nullable<int> totalRatings { get; set; }

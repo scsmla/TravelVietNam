@@ -1,0 +1,84 @@
+﻿@model IEnumerable<WelcomeToVietnam.Models.userTravelData>
+
+@{
+    ViewBag.Title = "showTour";
+    Layout = "~/Views/User/Shared/LayoutUser.cshtml";
+}
+
+<h2 style="color: white">Your Tours</h2>
+<style>
+    a, th, tr, td {
+        color: white;
+    }
+</style>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.username)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.place)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.adult)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.children)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.checkinDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.checkoutDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.quantityRoom)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Hotel)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.payment)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.username)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.place)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.adult)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.children)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.checkinDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.checkoutDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.quantityRoom)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Hotel)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.payment)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "EditTour", new { id = item.ID }, new { style = "color:white" }) |
+                @Html.ActionLink("Delete", "DeleteTour", new { id = item.ID }, new { style = "color:white" })
+            </td>
+        </tr>
+    }
+
+</table>
