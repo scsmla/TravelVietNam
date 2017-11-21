@@ -286,6 +286,7 @@
     <Content Include="Models\UserTravelData.edmx.diagram">
       <DependentUpon>UserTravelData.edmx</DependentUpon>
     </Content>
+    <None Include="Properties\PublishProfiles\git.pubxml" />
     <None Include="Properties\PublishProfiles\WelcomeToVietnam20171119115849 - Web Deploy.pubxml" />
     <None Include="scripts\jquery-3.1.1.intellisense.js" />
     <Content Include="scripts\jquery-1.10.2.js" />
