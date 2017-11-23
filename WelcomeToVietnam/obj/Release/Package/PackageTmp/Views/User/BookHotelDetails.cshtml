@@ -127,26 +127,22 @@
     document.getElementById("submitButton").addEventListener("click", function () {
         alert("You have booked a hotel ! Thank you !")
     });
-    var rat = 0.00;
-    $("body").click(function (event) {
-        if ($(event.target).is("input") && parseInt(event.target.id) > 0) {
-            rat = parseInt(event.target.id) / 2;
-            alert("You have rated this hotel " + rat + "/5.0");
+    var rat = 0;
+    for (i = 0; i <= 10; i++) {
+        document.getElementById("" + i).onclick = function () {
+            rat = parseInt(Number(this.id)) / 2;
+            alert("You have rated this place " + rat + "/5.0");
+            rat = parseFloat(rat).toFixed(2);
+            var dataToPost = { 'rating': Number(rat) }
+            $.ajax(
+            {
+                url: '/User/addRatingHotelTable',
+                dataType: "json",
+                type: "POST",
+                contentType: 'application/json; charset=utf-8',
+                data: JSON.stringify(dataToPost)
+            });
         }
-    });
-
-
-    $("#fieldSetRating").click(function () {
-        rat = parseFloat(rat).toFixed(2);
-        var dataToPost = { 'rating': Number(rat) }
-        $.ajax(
-        {
-            url: '/User/addRatingHotelTable',
-            dataType: "json",
-            type: "POST",
-            contentType: 'application/json; charset=utf-8',
-            data: JSON.stringify(dataToPost)
-        })
-    });
+    }
 
 </script>

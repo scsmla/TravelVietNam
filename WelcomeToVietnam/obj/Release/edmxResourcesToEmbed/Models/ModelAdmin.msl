@@ -4,12 +4,32 @@
     <EntitySetMapping Name="tblAdmin">
       <EntityTypeMapping TypeName="AdminModels.tblAdmin">
         <MappingFragment StoreEntitySet="tblAdmin">
-          <ScalarProperty Name="ID" ColumnName="ID" />
           <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
           <ScalarProperty Name="Password" ColumnName="Password" />
           <ScalarProperty Name="FullName" ColumnName="FullName" />
           <ScalarProperty Name="Phone" ColumnName="Phone" />
           <ScalarProperty Name="Email" ColumnName="Email" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="adminManageHotel">
+      <EntityTypeMapping TypeName="AdminModels.adminManageHotel">
+        <MappingFragment StoreEntitySet="adminManageHotel">
+          <ScalarProperty Name="Action" ColumnName="Action" />
+          <ScalarProperty Name="Hotel" ColumnName="Hotel" />
+          <ScalarProperty Name="Admin" ColumnName="Admin" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="adminManagePlace">
+      <EntityTypeMapping TypeName="AdminModels.adminManagePlace">
+        <MappingFragment StoreEntitySet="adminManagePlace">
+          <ScalarProperty Name="Action" ColumnName="Action" />
+          <ScalarProperty Name="Place" ColumnName="Place" />
+          <ScalarProperty Name="Admin" ColumnName="Admin" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

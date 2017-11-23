@@ -1,5 +1,23 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Schema Namespace="AdminModels.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="adminManageHotel">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Admin" Type="nvarchar" MaxLength="50" />
+    <Property Name="Hotel" Type="nvarchar" MaxLength="50" />
+    <Property Name="Action" Type="nvarchar" MaxLength="10" />
+  </EntityType>
+  <EntityType Name="adminManagePlace">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Admin" Type="nvarchar" MaxLength="50" />
+    <Property Name="Place" Type="nvarchar" MaxLength="50" />
+    <Property Name="Action" Type="nvarchar" MaxLength="10" />
+  </EntityType>
   <EntityType Name="tblAdmin">
     <Key>
       <PropertyRef Name="ID" />
@@ -12,6 +30,8 @@
     <Property Name="Email" Type="nvarchar" MaxLength="50" />
   </EntityType>
   <EntityContainer Name="AdminModelsStoreContainer">
+    <EntitySet Name="adminManageHotel" EntityType="Self.adminManageHotel" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="adminManagePlace" EntityType="Self.adminManagePlace" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tblAdmin" EntityType="Self.tblAdmin" Schema="dbo" store:Type="Tables" />
   </EntityContainer>
 </Schema>

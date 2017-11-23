@@ -13,5 +13,25 @@
   </EntityType>
   <EntityContainer Name="AdminDbContext" annotation:LazyLoadingEnabled="true">
     <EntitySet Name="tblAdmin" EntityType="Self.tblAdmin" />
+    <EntitySet Name="adminManageHotel" EntityType="AdminModels.adminManageHotel" />
+    <EntitySet Name="adminManagePlace" EntityType="AdminModels.adminManagePlace" />
   </EntityContainer>
+  <EntityType Name="adminManageHotel">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Admin" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Hotel" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Action" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="adminManagePlace">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Admin" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Place" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Action" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+  </EntityType>
 </Schema>

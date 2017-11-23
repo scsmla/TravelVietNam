@@ -6,6 +6,8 @@
     <edmx:Diagrams>
       <Diagram DiagramId="9ae28a2723ad4748807f83907a1ed5cc" Name="Diagram1">
         <EntityTypeShape EntityType="AdminModels.tblAdmin" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="AdminModels.adminManageHotel" Width="1.5" PointX="3.375" PointY="0.75" />
+        <EntityTypeShape EntityType="AdminModels.adminManagePlace" Width="1.5" PointX="3.375" PointY="3.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

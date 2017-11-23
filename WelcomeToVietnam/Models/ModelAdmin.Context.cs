@@ -26,5 +26,7 @@ namespace WelcomeToVietnam.Models
         }
     
         public virtual DbSet<tblAdmin> tblAdmin { get; set; }
+        public virtual DbSet<adminManageHotel> adminManageHotel { get; set; }
+        public virtual DbSet<adminManagePlace> adminManagePlace { get; set; }
     }
 }

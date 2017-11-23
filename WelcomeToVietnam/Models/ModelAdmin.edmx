@@ -4,7 +4,25 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="AdminModels.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="AdminModels.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="adminManageHotel">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Admin" Type="nvarchar" MaxLength="50" />
+          <Property Name="Hotel" Type="nvarchar" MaxLength="50" />
+          <Property Name="Action" Type="nvarchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="adminManagePlace">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Admin" Type="nvarchar" MaxLength="50" />
+          <Property Name="Place" Type="nvarchar" MaxLength="50" />
+          <Property Name="Action" Type="nvarchar" MaxLength="10" />
+        </EntityType>
         <EntityType Name="tblAdmin">
           <Key>
             <PropertyRef Name="ID" />
@@ -17,10 +35,11 @@
           <Property Name="Email" Type="nvarchar" MaxLength="50" />
         </EntityType>
         <EntityContainer Name="AdminModelsStoreContainer">
+          <EntitySet Name="adminManageHotel" EntityType="Self.adminManageHotel" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="adminManagePlace" EntityType="Self.adminManagePlace" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblAdmin" EntityType="Self.tblAdmin" Schema="dbo" store:Type="Tables" />
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="AdminModels" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -37,7 +56,27 @@
         </EntityType>
         <EntityContainer Name="AdminDbContext" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="tblAdmin" EntityType="Self.tblAdmin" />
+          <EntitySet Name="adminManageHotel" EntityType="AdminModels.adminManageHotel" />
+          <EntitySet Name="adminManagePlace" EntityType="AdminModels.adminManagePlace" />
         </EntityContainer>
+        <EntityType Name="adminManageHotel">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Admin" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Hotel" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Action" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="adminManagePlace">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Admin" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Place" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Action" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -47,12 +86,32 @@
           <EntitySetMapping Name="tblAdmin">
             <EntityTypeMapping TypeName="AdminModels.tblAdmin">
               <MappingFragment StoreEntitySet="tblAdmin">
-                <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="Password" ColumnName="Password" />
                 <ScalarProperty Name="FullName" ColumnName="FullName" />
                 <ScalarProperty Name="Phone" ColumnName="Phone" />
                 <ScalarProperty Name="Email" ColumnName="Email" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="adminManageHotel">
+            <EntityTypeMapping TypeName="AdminModels.adminManageHotel">
+              <MappingFragment StoreEntitySet="adminManageHotel">
+                <ScalarProperty Name="Action" ColumnName="Action" />
+                <ScalarProperty Name="Hotel" ColumnName="Hotel" />
+                <ScalarProperty Name="Admin" ColumnName="Admin" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="adminManagePlace">
+            <EntityTypeMapping TypeName="AdminModels.adminManagePlace">
+              <MappingFragment StoreEntitySet="adminManagePlace">
+                <ScalarProperty Name="Action" ColumnName="Action" />
+                <ScalarProperty Name="Place" ColumnName="Place" />
+                <ScalarProperty Name="Admin" ColumnName="Admin" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

@@ -109,6 +109,14 @@ namespace WelcomeToVietnam.Controllers
                     place.Rating = 0;
                     db.Place.Add(place);
                     db.SaveChanges();
+
+                    adminManagePlace data = new adminManagePlace();
+                    data.Action = "Create";
+                    data.Admin = Session["UserAdmin"].ToString();
+                    data.Place = place.Name;
+                    adminDb.adminManagePlace.Add(data);
+                    adminDb.SaveChanges();
+
                     return RedirectToAction("IndexPlace");
                 }
 
@@ -151,6 +159,14 @@ namespace WelcomeToVietnam.Controllers
                 {
                     db.Entry(place).State = EntityState.Modified;
                     db.SaveChanges();
+
+                    adminManagePlace data = new adminManagePlace();
+                    data.Action = "Edit";
+                    data.Admin = Session["UserAdmin"].ToString();
+                    data.Place = place.Name;
+                    adminDb.adminManagePlace.Add(data);
+                    adminDb.SaveChanges();
+
                     return RedirectToAction("IndexPlace");
                 }
                 ViewBag.Area = new SelectList(db.Area, "AreaTravelling", "AreaTravelling", place.Area);
@@ -191,6 +207,14 @@ namespace WelcomeToVietnam.Controllers
                 db.Place.Remove(place);
 
                 db.SaveChanges();
+
+                adminManagePlace data = new adminManagePlace();
+                data.Action = "Delete";
+                data.Admin = Session["UserAdmin"].ToString();
+                data.Place = place.Name;
+                adminDb.adminManagePlace.Add(data);
+                adminDb.SaveChanges();
+
                 return RedirectToAction("IndexPlace");
             }
             else
@@ -230,12 +254,22 @@ namespace WelcomeToVietnam.Controllers
                     HttpPostedFileBase file = Request.Files["imageData"];
                     string path = Path.Combine(Server.MapPath("~/Photos"), Path.GetFileName(file.FileName));
                     file.SaveAs(path);
+                    //add data to table hotel
                     byte[] imageArray = System.IO.File.ReadAllBytes(path);
                     hotel.Photos = imageArray;
                     hotel.totalRatings = 0;
                     hotel.Rating = 0;
                     db.Hotel.Add(hotel);
                     db.SaveChanges();
+
+                    //add data to table admin hotel manage
+                    adminManageHotel data = new adminManageHotel();
+                    data.Action = "Create";
+                    data.Admin = Session["UserAdmin"].ToString();
+                    data.Hotel = hotel.Name;
+                    adminDb.adminManageHotel.Add(data);
+                    adminDb.SaveChanges();
+
                     return RedirectToAction("IndexHotel");
                 }
                 return View(hotel);
@@ -270,6 +304,14 @@ namespace WelcomeToVietnam.Controllers
                 {
                     db.Entry(hotel).State = EntityState.Modified;
                     db.SaveChanges();
+
+                    adminManageHotel data = new adminManageHotel();
+                    data.Action = "Edit";
+                    data.Admin = Session["UserAdmin"].ToString();
+                    data.Hotel = hotel.Name;
+                    adminDb.adminManageHotel.Add(data);
+                    adminDb.SaveChanges();
+
                     return RedirectToAction("IndexHotel");
                 }
 
@@ -306,6 +348,13 @@ namespace WelcomeToVietnam.Controllers
                 db.Hotel.Remove(hotel);
 
                 db.SaveChanges();
+
+                adminManageHotel data = new adminManageHotel();
+                data.Action = "Delete";
+                data.Admin = Session["UserAdmin"].ToString();
+                data.Hotel = hotel.Name;
+                adminDb.adminManageHotel.Add(data);
+                adminDb.SaveChanges();
                 return RedirectToAction("IndexHotel");
             }
             else

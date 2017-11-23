@@ -327,6 +327,12 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\adminManageHotel.cs">
+      <DependentUpon>ModelAdmin.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\adminManagePlace.cs">
+      <DependentUpon>ModelAdmin.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\tblAdmin.parital.cs" />
     <Compile Include="Models\Area.cs">
       <DependentUpon>AreaModel.tt</DependentUpon>
