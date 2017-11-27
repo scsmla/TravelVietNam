@@ -1,0 +1,56 @@
+﻿
+@{
+    Layout = "~/Views/User/Shared/LayoutUser.cshtml";
+    ViewBag.Title = "AboutUs";
+}
+<style>
+    body {
+        font-family: Roboto;
+    }
+
+    h1 {
+        text-align: center;
+    }
+
+    p {
+        font-size: 20px;
+    }
+
+    img {
+        width: 100px;
+        height: 100px;
+    }
+</style>
+<h1 style="color: white">About us</h1>
+<p style="text-align: center; color: white">To provide information about us</p>
+<div class="row">
+    <div class="col-sm-3">
+    </div>
+    <div class="col-sm-7">
+        <p style="color: white;text-align: center;">Vietnam is a country with a multi-faceted personality. Its cities are the expression of various captivating cultures and eventful history, while its tropical coast offers a stunning beachside paradise.We build this webiste to bring you to VietNam - a beatiful country</p>
+    </div>
+</div>
+<h3 style="color: white;text-align: center;">Team</h3>
+<br />
+<br />
+<br />
+<center>
+    <img class="img-circle" src="~/Photos/bg1.jpg" alt="bg1">
+    <img class="img-circle" src="~/Photos/bg2.jpg" alt="bg2">
+</center>
+<br />
+<br />
+<br />
+<h3 style="color: white;text-align: center;">Location</h3>
+<script>
+    function myMap() {
+        var mapProp = {
+            center: new google.maps.LatLng(51.508742, -0.120850),
+            zoom: 5,
+        };
+        var map = new google.maps.Map(document.getElementById("googleMap"), mapProp);
+    }
+</script>
+
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBu-916DdpKAjTmJNIgngS6HL_kDIKU0aU&callback=myMap"></script>
+

@@ -1,6 +1,7 @@
 ﻿@model WelcomeToVietnam.Models.User
 
 @{
+    Layout = "~/Views/User/Shared/LayoutUser.cshtml";
     ViewBag.Title = "UserProfile";
 }
 <style>
@@ -54,5 +55,5 @@
     </dl>
 </div>
 <p >
-    @Html.ActionLink("Edit Profile", "#", new { id = Model.ID, style = "color:white" }) 
+    @Html.ActionLink("Edit Profile", "#")
 </p>

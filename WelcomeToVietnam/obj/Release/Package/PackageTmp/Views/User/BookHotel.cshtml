@@ -1,4 +1,6 @@
-﻿@model IEnumerable<WelcomeToVietnam.Models.Hotel>
+﻿@using PagedList;
+@using PagedList.Mvc;
+@model IPagedList<WelcomeToVietnam.Models.Hotel>
 
 @{
     Layout = "~/Views/User/Shared/LayoutUser.cshtml";
@@ -7,7 +9,18 @@
 }
 <link rel="stylesheet" type="text/css" href="~/Content/themes/DetailPage.css" />
 <h2 style="color:white">BookHotel</h2>
+@using (Html.BeginForm("BookHotel", "User", FormMethod.Get, new { style = "color:white" }))
+{
 
+    <b style="color:white">Sort By</b>
+    <br />
+    @Html.RadioButton("sortBy", "VisitorPerYear")<text>VisitorPerYear</text>
+    @Html.RadioButton("sortBy", "Rating", true)<text>Rating</text>
+    <br />
+    <br />
+    <br />
+    <input type="submit" value="Sort Now" style="background:transparent; height: 50px; color: white; width: 100px " class="button" />
+}
 @foreach (var item in Model)
 {
     <div class="col-sm-4" style="margin-top:50px">
@@ -24,7 +37,7 @@
             <p style="color:green;font-weight:bold">@item.Price<span>$</span></p>
             
             <p> 
-                <div class="rating" style="float:left">
+                <div class="rating" style="float:left; direction: rtl;">
                     <span class="star1"></span>
                     <span class="star2"></span>
                     <span class="star3"></span>
@@ -49,3 +62,10 @@
     </script>
 
 }
+@Html.PagedListPager(Model, page => Url.Action("BookHotel", new
+{
+    page,
+    sortBy = Request.QueryString["sortBy"],
+    search = Request.QueryString["search"]
+}),
+    new PagedListRenderOptions() { Display = PagedListDisplayMode.IfNeeded })

@@ -215,8 +215,8 @@
             <div class="col-sm-5">
                 <p>Contact us and we'll call to you with in 6 hours</p>
                 <p><span class="glyphicon glyphicon-map-marker"></span> Ha noi, Viet Nam</p>
-                <p><span class="glyphicon glyphicon-phone"></span> +0123456789</p>
-                <p><span class="glyphicon glyphicon-envelope"></span> youremail@something.com</p>
+                <p><span class="glyphicon glyphicon-phone"></span> +01656123360</p>
+                <p><span class="glyphicon glyphicon-envelope"></span> nd26041998@gmail.com</p>
             </div>
             <div class="col-sm-7 slideanim">
                 <div class="row">
@@ -227,10 +227,10 @@
                         <input class="form-control" id="email" name="email" placeholder="Email" type="email" required>
                     </div>
                 </div>
-                <textarea class="form-control" id="comments" name="comments" placeholder="Comment" rows="5"></textarea><br>
+                <textarea class="form-control" id="feedback" name="feedback" placeholder="Feedback" rows="5"></textarea><br>
                 <div class="row">
                     <div class="col-sm-12 form-group">
-                        <button class="btn btn-default pull-right" type="submit">Send</button>
+                        <button class="btn btn-default pull-right" type="submit" onclick="feedBackUser()">Send</button>
                     </div>
                 </div>
             </div>
@@ -241,5 +241,11 @@
             <span class="glyphicon glyphicon-chevron-up"></span>
         </a>
     </footer>
+    <script>
+        function feedBackUser()
+        {
+            alert("Thanh you for your feedback");
+        }
+    </script>
 </body>
 </html>

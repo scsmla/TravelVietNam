@@ -16,9 +16,10 @@ namespace WelcomeToVietnam.Controllers
         private AreadbContext db = new AreadbContext();
         private UserdbContext userdb = new UserdbContext();
         private UserTravelDbContext userTravelDatadb = new UserTravelDbContext();
-        private static int currentPlaceId = 0;
-        private static int currentHotelId = 0;
-        private static int currentTourId = 0;
+        private int currentPlaceId = 0;
+        private int currentHotelId = 0;
+        private int currentTourId = 0;
+
         public ActionResult UserPage()
         {
             if (Session["ID"] != null)
@@ -188,7 +189,7 @@ namespace WelcomeToVietnam.Controllers
         }
 
         [HttpGet]
-        public ActionResult BookHotel()
+        public ActionResult BookHotel(int ? page,string sortBy)
         {
 
             if (Session["ID"] != null)
@@ -403,6 +404,18 @@ namespace WelcomeToVietnam.Controllers
                 db.SaveChanges();
             }
             return RedirectToAction("showTour","User");
+        }
+
+
+
+        public ActionResult AboutUs()
+        {
+            return View();
+        }
+
+        public ActionResult FAQ()
+        {
+            return View();
         }
 
     }

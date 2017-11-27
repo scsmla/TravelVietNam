@@ -29,10 +29,10 @@
             </div>
             <div class="collapse navbar-collapse" id="myNavbar">
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a href="@Url.Action("UserPage","User")">SEARCH</a></li>
-                    <li><a href="#">SERVICES</a></li>
-                    <li><a href="#">FAQ</a></li>
-                    <li><a href="#">ABOUT US</a></li>
+                    <li><a href="#" onclick="login()">SEARCH</a></li>
+                    <li><a href="#" onclick="login()">SERVICES</a></li>
+                    <li><a href="#" onclick="login()">FAQ</a></li>
+                    <li><a href="#" onclick="login()">ABOUT US</a></li>
                    
                 </ul>
             </div>
@@ -60,8 +60,8 @@
                 <br />
                 <br />
                 <p><span class="glyphicon glyphicon-map-marker"></span> Ha noi, Viet Nam</p>
-                <p><span class="glyphicon glyphicon-phone"></span> +0123456789</p>
-                <p><span class="glyphicon glyphicon-envelope"></span> nd2222@gmail.com</p>
+                <p><span class="glyphicon glyphicon-phone"></span> +01656123360</p>
+                <p><span class="glyphicon glyphicon-envelope"></span> nd26041998@gmail.com</p>
             </div>
             <div class="col-sm-2">
                 <strong style="color:white">SITE PAGES</strong>
@@ -98,12 +98,18 @@
     <script src="~/scripts/jquery-3.1.1.min.js"></script>
     <script src="~/Scripts/bootstrap.min.js"></script>
     <script>
+        function login()
+        {
+            alert("Please log in to continue")
+        }
+
         $(function () {
             $(document).scroll(function () {
                 var $nav = $(".navbar-fixed-top");
                 $nav.toggleClass('scrolled', $(this).scrollTop() > $nav.height());
             });
         });
+
         $.noConflict();
         jQuery(document).ready(function () {
             $('#checkInInput').datepicker({ dateFormat: 'yy-mm-dd' });

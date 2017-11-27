@@ -20,6 +20,10 @@ a:hover{
   position: relative;
   width: 1.1em;
 }
+input[id="sortBy"]
+{
+    color:white;
+}
 .rating > span:hover:before,
 .rating > span:hover ~ span:before {
    position: absolute;

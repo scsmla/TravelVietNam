@@ -247,6 +247,8 @@
       <DependentUpon>UserTravelData.edmx</DependentUpon>
       <LastGenOutput>UserTravelData1.cs</LastGenOutput>
     </Content>
+    <Content Include="Photos\bg1.jpg" />
+    <Content Include="Photos\bg2.jpg" />
     <Content Include="Photos\bigcity.jpg" />
     <Content Include="Photos\catba.jpg" />
     <Content Include="Photos\clock.jpg" />
@@ -466,6 +468,9 @@
     <Content Include="Views\User\EditTour.cshtml" />
     <Content Include="Views\User\DeleteTour.cshtml" />
     <Content Include="Views\AdminManage\CreateHotel.cshtml" />
+    <Content Include="Views\Shared\_LayoutPlace.cshtml" />
+    <Content Include="Views\User\AboutUs.cshtml" />
+    <Content Include="Views\User\FAQ.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

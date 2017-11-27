@@ -1,0 +1,150 @@
+﻿
+@{
+    Layout = "~/Views/User/Shared/LayoutUser.cshtml";
+    ViewBag.Title = "FAQ";
+}
+
+<style>
+    body {
+        font-family: Roboto;
+    }
+
+    h1 {
+        text-align: center;
+    }
+
+    p {
+        font-size: 20px;
+    }
+
+    img {
+        width: 100px;
+        height: 100px;
+    }
+
+    span {
+        color: white;
+    }
+
+    .question {
+        color: white;
+    }
+
+    .answer {
+        color: white;
+    }
+</style>
+
+<h1 style="text-align: center;color: white">FAQ</h1>
+<br>
+<br>
+<div class="container">
+    <div class="row">
+        <div class="col-xs-3">
+        </div>
+        <div class="col-xs-6">
+            <center>
+                <div id="accordion" class="panel-group">
+                    <div class="panel panel-primary">
+                        <div class="panel-heading">
+                            <h4 class="panel-title">
+                                <a href="#panelBodyOne" data-toggle="collapse"
+                                   data-parent="#accordion">
+                                    <span class="glyphicon glyphicon-plus-sign"></span>
+                                    How do I edit my profile ?
+                                </a>
+                            </h4>
+                        </div>
+                        <div id="panelBodyOne" class="panel-collapse collapse">
+                            <div class="panel-body">
+                                Sorry, we are not supporting edit profie now.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel panel-primary">
+                        <div class="panel-heading">
+                            <h4 class="panel-title">
+                                <a href="#panelBodyTwo" data-toggle="collapse"
+                                   data-parent="#accordion">
+                                    <span class="glyphicon glyphicon-plus-sign"></span>
+                                    How do I commit a hotel ?
+                                </a>
+                            </h4>
+                        </div>
+                        <div id="panelBodyTwo" class="panel-collapse collapse">
+                            <div class="panel-body">
+                                Please contact our admin though the email we display in the below
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel panel-primary">
+                        <div class="panel-heading">
+                            <h4 class="panel-title">
+                                <a href="#panelBodyThree" data-toggle="collapse"
+                                   data-parent="#accordion">
+                                    <span class="glyphicon glyphicon-plus-sign"></span>
+                                    How can I cancel my tour ?
+                                </a>
+                            </h4>
+                        </div>
+                        <div id="panelBodyThree" class="panel-collapse collapse">
+                            <div class="panel-body">
+                                You click "My Tour " in the left above.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel panel-primary">
+                        <div class="panel-heading">
+                            <h4 class="panel-title">
+                                <a href="#panelBodyFour" data-toggle="collapse"
+                                   data-parent="#accordion">
+                                    <span class="glyphicon glyphicon-plus-sign"></span>
+                                    When I know my tour is handled ?
+                                </a>
+                            </h4>
+                        </div>
+                        <div id="panelBodyFour" class="panel-collapse collapse">
+                            <div class="panel-body">
+                                We will email for you as soon possible when we done.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel panel-primary">
+                        <div class="panel-heading">
+                            <h4 class="panel-title">
+                                <a href="#panelBodyFive" data-toggle="collapse"
+                                   data-parent="#accordion">
+                                    <span class="glyphicon glyphicon-plus-sign"></span>
+                                    Do you support tour in other country except Viet Nam?
+                                </a>
+                            </h4>
+                        </div>
+                        <div id="panelBodyFive" class="panel-collapse collapse">
+                            <div class="panel-body">
+                                No, our website is Welcome To Viet Nam so we only support tour in Viet Nam.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </center>
+        </div>
+    </div>
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js">
+</script>
+<script src="bootstrap/js/bootstrap.min.js"></script>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('.collapse').on('shown.bs.collapse', function () {
+            $(this).parent().find('.glyphicon-plus-sign')
+			.removeClass('glyphicon-plus-sign')
+			.addClass('glyphicon-minus-sign');
+        }).on('hidden.bs.collapse', function () {
+            $(this).parent().find(".glyphicon-minus-sign")
+			.removeClass("glyphicon-minus-sign")
+			.addClass("glyphicon-plus-sign");
+        });
+    });
+</script>
