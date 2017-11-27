@@ -14,7 +14,8 @@
 
     <b style="color:white">Sort By</b>
     <br />
-    @Html.RadioButton("sortBy", "VisitorPerYear")<text>VisitorPerYear</text>
+    <br />
+    @Html.RadioButton("sortBy", "Price")<text>Price</text>
     @Html.RadioButton("sortBy", "Rating", true)<text>Rating</text>
     <br />
     <br />
@@ -65,7 +66,6 @@
 @Html.PagedListPager(Model, page => Url.Action("BookHotel", new
 {
     page,
-    sortBy = Request.QueryString["sortBy"],
-    search = Request.QueryString["search"]
+    sortBy = Request.QueryString["sortBy"]
 }),
     new PagedListRenderOptions() { Display = PagedListDisplayMode.IfNeeded })
