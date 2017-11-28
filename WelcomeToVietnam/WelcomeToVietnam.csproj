@@ -471,6 +471,7 @@
     <Content Include="Views\Shared\_LayoutPlace.cshtml" />
     <Content Include="Views\User\AboutUs.cshtml" />
     <Content Include="Views\User\FAQ.cshtml" />
+    <Content Include="Views\User\Services.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

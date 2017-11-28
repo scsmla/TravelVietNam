@@ -383,6 +383,8 @@ namespace WelcomeToVietnam.Controllers
                     currentTour.quantityRoom = Convert.ToInt32(quantityRooms);
                     currentTour.checkinDate = checkInDate;
                     currentTour.checkoutDate = checkOutDate;
+                    Hotel currentBookedHotel = db.Hotel.Where(x => x.ID == currentHotelId).FirstOrDefault();
+                    currentTour.payment = Convert.ToInt32((checkOutDate - checkInDate)) * Convert.ToInt32(currentBookedHotel.Price);
                     userTravelDatadb.SaveChanges();
                 }
                 return RedirectToAction("showTour","User");
@@ -391,6 +393,7 @@ namespace WelcomeToVietnam.Controllers
                 return RedirectToAction("Login", "Home");
         }
 
+        [HttpGet]
         public ActionResult DeleteTour(int id)
         {
 
@@ -412,7 +415,7 @@ namespace WelcomeToVietnam.Controllers
                 userTravelData tour = userTravelDatadb.userTravelData.Where(x => x.ID == id).FirstOrDefault();
                 userTravelDatadb.userTravelData.Remove(tour);
 
-                db.SaveChanges();
+                userTravelDatadb.SaveChanges();
             }
             return RedirectToAction("showTour","User");
         }
@@ -425,6 +428,11 @@ namespace WelcomeToVietnam.Controllers
         }
 
         public ActionResult FAQ()
+        {
+            return View();
+        }
+
+        public ActionResult Services()
         {
             return View();
         }
